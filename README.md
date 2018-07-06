@@ -1,0 +1,2 @@
+# backup
+用jdbc实现从postgresql数据库拷贝数据到mysql数据库
