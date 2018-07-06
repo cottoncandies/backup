@@ -1,8 +1,6 @@
 package backup;
 
-import entity.Paper;
-import entity.Subject;
-import entity.User;
+import entity.*;
 import mysql.WriteToMysql;
 import postgresql.ReadFromPostgresql;
 
@@ -25,12 +23,23 @@ public class JdbcBackup {
             WriteToMysql.addSubject(subject);
         }*/
 
+//        //从postgresql数据库读取数据
+//        List<Paper> papers = ReadFromPostgresql.getPapers();
+//        //写入mysql数据库
+//        for (Paper paper : papers) {
+//            WriteToMysql.addPaper(paper);
+//        }
         //从postgresql数据库读取数据
-        List<Paper> papers = ReadFromPostgresql.getPapers();
+//        List<Ability> abilitys = ReadFromPostgresql.getAbilitys();
+//        //写入mysql数据库
+//        for (Ability ability : abilitys) {
+//            WriteToMysql.addAbility(ability);
+//        }
+
+        List<BookCatalog> bookCatalogs = ReadFromPostgresql.getBookCatalogs();
         //写入mysql数据库
-        for (Paper paper : papers) {
-            //WriteToMysql.addPaper(paper);
-            System.out.println(paper);
+        for (BookCatalog bookCatalog : bookCatalogs) {
+            WriteToMysql.addBookCatalog(bookCatalog);
         }
     }
 }

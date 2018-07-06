@@ -8,18 +8,6 @@ public class User {
     private Long ng_subject_id;
     private String sz_nickname;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "ng_id=" + ng_id +
-                ", sz_username='" + sz_username + '\'' +
-                ", sz_password='" + sz_password + '\'' +
-                ", nt_section=" + nt_section +
-                ", ng_subject_id=" + ng_subject_id +
-                ", sz_nickname='" + sz_nickname + '\'' +
-                '}';
-    }
-
     public Long getNg_id() {
         return ng_id;
     }
@@ -65,16 +53,6 @@ public class User {
     }
 
     public void setSz_nickname(String sz_nickname) {
-        this.sz_nickname = sz_nickname;
-    }
-
-    public User(Long ng_id, String sz_username, String sz_password, Integer nt_section, Long ng_subject_id, String sz_nickname) {
-
-        this.ng_id = ng_id;
-        this.sz_username = sz_username;
-        this.sz_password = sz_password;
-        this.nt_section = nt_section;
-        this.ng_subject_id = ng_subject_id;
         this.sz_nickname = sz_nickname;
     }
 

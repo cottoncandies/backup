@@ -15,6 +15,22 @@ public class BookCatalog {
     private  String tx_comment;
     private Integer nt_old_id;
 
+    public BookCatalog(Long ng_id, String sz_num, String sz_parent_num, String sz_caption, Long ng_parent_id, Integer nt_section, Long ng_subject_id, Integer nt_grade, Integer nt_serial, String sz_descr, Integer nt_show, String tx_comment, Integer nt_old_id) {
+        this.ng_id = ng_id;
+        this.sz_num = sz_num;
+        this.sz_parent_num = sz_parent_num;
+        this.sz_caption = sz_caption;
+        this.ng_parent_id = ng_parent_id;
+        this.nt_section = nt_section;
+        this.ng_subject_id = ng_subject_id;
+        this.nt_grade = nt_grade;
+        this.nt_serial = nt_serial;
+        this.sz_descr = sz_descr;
+        this.nt_show = nt_show;
+        this.tx_comment = tx_comment;
+        this.nt_old_id = nt_old_id;
+    }
+
     public Long getNg_id() {
         return ng_id;
     }

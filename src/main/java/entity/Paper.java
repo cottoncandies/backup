@@ -215,33 +215,4 @@ public class Paper {
     public Paper() {
 
     }
-
-    @Override
-    public String toString() {
-        return "Paper{" +
-                "ng_id=" + ng_id +
-                ", sz_num='" + sz_num + '\'' +
-                ", sz_caption='" + sz_caption + '\'' +
-                ", sz_kind='" + sz_kind + '\'' +
-                ", sz_age='" + sz_age + '\'' +
-                ", ng_cat_id=" + ng_cat_id +
-                ", nt_section=" + nt_section +
-                ", ng_subject_id=" + ng_subject_id +
-                ", sz_wenli='" + sz_wenli + '\'' +
-                ", sz_prov='" + sz_prov + '\'' +
-                ", sz_city='" + sz_city + '\'' +
-                ", nt_term=" + nt_term +
-                ", nt_grade=" + nt_grade +
-                ", nt_score=" + nt_score +
-                ", nt_score_ex=" + nt_score_ex +
-                ", nt_cost_resp=" + nt_cost_resp +
-                ", ts_created=" + ts_created +
-                ", ts_updated=" + ts_updated +
-                ", ts_auditing=" + ts_auditing +
-                ", tx_comment='" + tx_comment + '\'' +
-                ", sz_infor_src='" + sz_infor_src + '\'' +
-                ", sz_infor_kind='" + sz_infor_kind + '\'' +
-                ", nt_old_id=" + nt_old_id +
-                '}';
-    }
 }
