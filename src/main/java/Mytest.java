@@ -1,7 +1,6 @@
 import dao.AbilityDao;
 import entity.Ability;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Mytest {
@@ -18,7 +17,7 @@ public class Mytest {
             System.out.println(a);
         }
         //List<Ability> abilities = Arrays.asList(new Ability(1L, 1, 1L, "1", 1,"1", 1),new Ability(2L, 1, 1L, "1", 1,"1", 1));
-        dao.sava(abilities);
+        dao.save(abilities);
     }
 }
 
