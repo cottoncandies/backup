@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdff9f8d-7fd8-4bca-9389-c014338d935c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/AbilityDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/BookCatalogDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/ExamAbiDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/ExamDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/ExamKindDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/ExamKpDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/FavoriteDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/KnowPointDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/MyPaperDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/PaperDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/PaperExamDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/SubjectDao.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backup/JdbcBackup.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AbilityDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/AbilityDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mysql.properties" afterPath="$PROJECT_DIR$/src/main/resources/mysql.properties" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backup/JdbcBackup.class" afterPath="$PROJECT_DIR$/target/classes/backup/JdbcBackup.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,17 +17,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Mytest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Mytest.java">
+    <leaf>
+      <file leaf-file-name="AbilityDao.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/AbilityDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="363">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#215#216#0" expanded="true" />
-                <element signature="e#255#256#0" expanded="true" />
-                <marker date="1531028554532" expanded="true" signature="465:483" ph="SELECT * FRO... user" />
+                <element signature="method#queryAll#0;class#AbilityDao#0" expanded="false" />
+                <element signature="method#sava#0;class#AbilityDao#0" expanded="false" />
+                <marker date="1531032221027" expanded="true" signature="310:337" ph="SELECT * FRO... sys_ability_t" />
+                <marker date="1531032221027" expanded="true" signature="364:484" ph="insert into sys_ability_t... " />
               </folding>
             </state>
           </provider>
@@ -48,6 +40,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="springmvc" />
       </list>
     </option>
   </component>
@@ -71,11 +64,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/postgres.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/postgresql.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/util/MysqlUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/JdbcBackup.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Ability.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/ExamAbi.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/ExamKind.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/ExamKp.java" />
@@ -94,10 +83,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/util/JdbcUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/backup/JdbcBackup.java" />
-        <option value="$PROJECT_DIR$/src/main/java/util/JDBCUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mysql.properties" />
         <option value="$PROJECT_DIR$/src/main/java/dao/Ability.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/AbilityDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/BookCatalog.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/Exam.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/ExamDao.java" />
@@ -121,6 +107,13 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/SubjectDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/PaperExam.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/PaperExamDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/JDBCUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/BaseDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/MysqlUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/util/PostgresqlUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/AbilityDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mysql.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Ability.java" />
         <option value="$PROJECT_DIR$/src/main/java/Mytest.java" />
       </list>
     </option>
@@ -143,7 +136,9 @@
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -185,37 +180,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="mysql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="postgresql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -237,6 +201,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="util" />
       <recent name="entity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -256,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Mytest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -267,6 +232,20 @@
     <configuration name="JdbcBackup" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="backup.JdbcBackup" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="backup" />
+      <envs />
+    </configuration>
+    <configuration name="Mytest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Mytest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -352,9 +331,14 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.JdbcBackup" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Mytest" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.JdbcBackup" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.Mytest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.JdbcBackup" />
       </list>
     </recent_temporary>
   </component>
@@ -373,7 +357,7 @@
       <updated>1530776402513</updated>
       <workItem from="1530776403768" duration="12612000" />
       <workItem from="1530839481379" duration="955000" />
-      <workItem from="1531025673220" duration="2877000" />
+      <workItem from="1531025673220" duration="8264000" />
     </task>
     <task id="LOCAL-00001" summary="paper.java">
       <created>1530840330642</created>
@@ -403,11 +387,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531027485019</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="建立dao">
+      <created>1531028603095</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1531028603095</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44425000" />
+    <option name="totallyTimeSpent" value="49812000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -420,7 +411,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -456,12 +447,12 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18240343" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -481,29 +472,16 @@
     <MESSAGE value="周五上午" />
     <MESSAGE value="周五实体完成" />
     <MESSAGE value="完成jdbcutil类的编写" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成jdbcutil类的编写" />
+    <MESSAGE value="建立dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="建立dao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/postgresql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="43" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -521,7 +499,10 @@
             <element signature="method#addUser#0;class#WriteToMysql#0" expanded="false" />
             <element signature="method#addSubject#0;class#WriteToMysql#0" expanded="false" />
             <element signature="method#addPaper#0;class#WriteToMysql#0" expanded="false" />
-            <element signature="method#addAbility#0;class#WriteToMysql#0" expanded="false" />
+            <marker date="1531025660312" expanded="true" signature="575:956" ph="insert into sys_user_t... " />
+            <marker date="1531025660312" expanded="true" signature="1790:2029" ph="insert into sys_subject_t... " />
+            <marker date="1531025660312" expanded="true" signature="2949:4087" ph="insert into sys_paper_t... " />
+            <marker date="1531025660312" expanded="true" signature="4895:5333" ph="insert into sys_ability_t... " />
             <marker date="1531025660312" expanded="true" signature="6130:6194" ph="insert into sys_book_catalog_t... " />
           </folding>
         </state>
@@ -593,7 +574,10 @@
             <element signature="method#addUser#0;class#WriteToMysql#0" expanded="false" />
             <element signature="method#addSubject#0;class#WriteToMysql#0" expanded="false" />
             <element signature="method#addPaper#0;class#WriteToMysql#0" expanded="false" />
-            <element signature="method#addAbility#0;class#WriteToMysql#0" expanded="false" />
+            <marker date="1531025660312" expanded="true" signature="575:956" ph="insert into sys_user_t... " />
+            <marker date="1531025660312" expanded="true" signature="1790:2029" ph="insert into sys_subject_t... " />
+            <marker date="1531025660312" expanded="true" signature="2949:4087" ph="insert into sys_paper_t... " />
+            <marker date="1531025660312" expanded="true" signature="4895:5333" ph="insert into sys_ability_t... " />
             <marker date="1531025660312" expanded="true" signature="6130:6194" ph="insert into sys_book_catalog_t... " />
           </folding>
         </state>
@@ -633,29 +617,6 @@
     <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30-sources.jar!/com/mysql/jdbc/NonRegisteringDriver.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30-sources.jar!/com/mysql/jdbc/StringUtils.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30-sources.jar!/com/mysql/jdbc/ConnectionImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/postgresql/ReadFromPostgresql.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="246" column="13" lean-forward="true" selection-start-line="246" selection-start-column="13" selection-end-line="246" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#getUsers#0;class#ReadFromPostgresql#0" expanded="false" />
-            <element signature="method#getSubjects#0;class#ReadFromPostgresql#0" expanded="false" />
-            <element signature="method#getPapers#0;class#ReadFromPostgresql#0" expanded="false" />
-            <element signature="method#getAbilitys#0;class#ReadFromPostgresql#0" expanded="false" />
-            <element signature="method#getBookCatalogs#0;class#ReadFromPostgresql#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Ability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entity/BookCatalog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3285">
@@ -825,63 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backup/JdbcBackup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="18" column="57" lean-forward="true" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/postgresql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mysql/WriteToMysql.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="180" column="0" lean-forward="true" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addUser#0;class#WriteToMysql#0" expanded="false" />
-            <element signature="method#addSubject#0;class#WriteToMysql#0" expanded="false" />
-            <element signature="method#addPaper#0;class#WriteToMysql#0" expanded="false" />
-            <element signature="method#addAbility#0;class#WriteToMysql#0" expanded="false" />
-            <marker date="1531025660312" expanded="true" signature="6130:6194" ph="insert into sys_book_catalog_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/util/JDBCUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/AbilityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -978,15 +882,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Mytest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/BaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="231">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/postgresql/ReadFromPostgresql.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="187" column="0" lean-forward="true" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <folding>
+            <element signature="method#getUsers#0;class#ReadFromPostgresql#0" expanded="false" />
+            <element signature="method#getSubjects#0;class#ReadFromPostgresql#0" expanded="false" />
+            <element signature="method#getPapers#0;class#ReadFromPostgresql#0" expanded="false" />
+            <element signature="method#getBookCatalogs#0;class#ReadFromPostgresql#0" expanded="false" />
+            <marker date="1531025660314" expanded="true" signature="5978:6005" ph="select * fro... sys_ability_t" />
+            <marker date="1531025660314" expanded="true" signature="9605:9633" ph="select * fro... sys_exam_abi_t" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mysql/WriteToMysql.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="163" column="44" lean-forward="true" selection-start-line="163" selection-start-column="44" selection-end-line="163" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#215#216#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <marker date="1531028554532" expanded="true" signature="465:483" ph="SELECT * FRO... user" />
+            <element signature="method#addUser#0;class#WriteToMysql#0" expanded="false" />
+            <element signature="method#addSubject#0;class#WriteToMysql#0" expanded="false" />
+            <element signature="method#addPaper#0;class#WriteToMysql#0" expanded="false" />
+            <marker date="1531025660312" expanded="true" signature="575:956" ph="insert into sys_user_t... " />
+            <marker date="1531025660312" expanded="true" signature="1790:2029" ph="insert into sys_subject_t... " />
+            <marker date="1531025660312" expanded="true" signature="2949:4087" ph="insert into sys_paper_t... " />
+            <marker date="1531025660312" expanded="true" signature="4895:5333" ph="insert into sys_ability_t... " />
+            <marker date="1531025660312" expanded="true" signature="6130:6194" ph="insert into sys_book_catalog_t... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Ability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1353">
+          <caret line="69" column="5" lean-forward="false" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/postgresql.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mysql.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/util/PostgresqlUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/util/MysqlUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1287">
+          <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backup/JdbcBackup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="27" column="43" lean-forward="true" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Mytest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#163#164#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/AbilityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#queryAll#0;class#AbilityDao#0" expanded="false" />
+            <element signature="method#sava#0;class#AbilityDao#0" expanded="false" />
+            <marker date="1531032221027" expanded="true" signature="310:337" ph="SELECT * FRO... sys_ability_t" />
+            <marker date="1531032221027" expanded="true" signature="364:484" ph="insert into sys_ability_t... " />
           </folding>
         </state>
       </provider>
