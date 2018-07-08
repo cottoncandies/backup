@@ -45,7 +45,7 @@ public class AbilityDao implements BaseDao<Ability> {
             }
 
             // 5.释放资源
-            MysqlUtil.close(conn, rs, st);
+            PostgresqlUtil.close(conn, rs, st);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class AbilityDao implements BaseDao<Ability> {
         return abilities;
     }
 
-    public void sava(List<Ability> list) {
+    public void save(List<Ability> list) {
         try {
             //1.获取mysql连接
             Connection conn = MysqlUtil.getConnection();

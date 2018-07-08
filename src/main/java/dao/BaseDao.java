@@ -5,5 +5,5 @@ import java.util.List;
 public interface BaseDao<T> {
     List<T> queryAll();
 
-    void sava(List<T> list);
+    void save(List<T> list);
 }
