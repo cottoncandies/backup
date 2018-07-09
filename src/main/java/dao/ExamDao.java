@@ -30,19 +30,23 @@ public class ExamDao {
             PostgresqlConn = PostgresqlUtil.getConnection();
             mysqlConn = MysqlUtil.getConnection();
 
+            //设置AutoCommit属性为false,这个一定要用
+            //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
+            //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
+            PostgresqlConn.setAutoCommit(false);
+
 
             // 2.获取SQL执行者
             PostgresqlPstm = PostgresqlConn.prepareStatement(selectSql,ResultSet.TYPE_FORWARD_ONLY,
                     ResultSet.CONCUR_READ_ONLY);
-            PostgresqlPstm.setFetchSize(1);
-            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_REVERSE);
+            PostgresqlPstm.setFetchSize(10);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
 
             mysqlPstm = mysqlConn.prepareStatement(insertSql);
 
 
             // 3.执行sql语句
             rs = PostgresqlPstm.executeQuery();
-            rs.setFetchSize(1);
 
             while (rs.next()) {
 
