@@ -32,12 +32,17 @@ public class ExamDao {
 
 
             // 2.获取SQL执行者
-            PostgresqlPstm = PostgresqlConn.prepareStatement(selectSql,ResultSet.FETCH_FORWARD,ResultSet.CONCUR_READ_ONLY, ResultSet.CLOSE_CURSORS_AT_COMMIT);
+            PostgresqlPstm = PostgresqlConn.prepareStatement(selectSql,ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY);
+            PostgresqlPstm.setFetchSize(1);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_REVERSE);
+
             mysqlPstm = mysqlConn.prepareStatement(insertSql);
 
 
             // 3.执行sql语句
             rs = PostgresqlPstm.executeQuery();
+            rs.setFetchSize(1);
 
             while (rs.next()) {
 
