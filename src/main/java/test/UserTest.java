@@ -16,9 +16,8 @@ public class UserTest {
 
         UserDao userDao = new UserDao();
 
-        List<User> users = userDao.queryAll();
+        userDao.backup();
 
-        userDao.save(users);
     }
 }
 

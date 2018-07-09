@@ -30,7 +30,6 @@ public class Mytest {
         //List<Ability> abilities = abilityDao.queryAll();
         List<BookCatalog> bookCatalogs = bookCatalogDao.queryAll();
         List<ExamAbi> examAbis = examAbiDao.queryAll();
-        List<Exam> exams = examDao.queryAll();
         List<ExamKind> examKinds = examKindDao.queryAll();
         List<ExamKp> examKps = examKpDao.queryAll();
         List<Favorite> favorites = favoriteDao.queryAll();
@@ -39,7 +38,7 @@ public class Mytest {
         List<Paper> papers = paperDao.queryAll();
         List<PaperExam> paperExams = paperExamDao.queryAll();
         List<Subject> subjects = subjectDao.queryAll();
-        List<User> users = userDao.queryAll();
+        //List<User> users = userDao.queryAll();
 
 
 
@@ -49,7 +48,6 @@ public class Mytest {
         //abilityDao.save(abilities);
         bookCatalogDao.save(bookCatalogs);
         examAbiDao.save(examAbis);
-        examDao.save(exams);
         examKindDao.save(examKinds);
         examKpDao.save(examKps);
         favoriteDao.save(favorites);
@@ -58,7 +56,7 @@ public class Mytest {
         paperDao.save(papers);
         paperExamDao.save(paperExams);
         subjectDao.save(subjects);
-        userDao.save(users);
+        //userDao.save(users);
     }
 }
 

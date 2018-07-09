@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.ExamDao;
 
 public class ExamTest {
 
@@ -16,11 +13,7 @@ public class ExamTest {
 
         ExamDao examDao = new ExamDao();
 
-        //List<Exam> exams = examDao.queryAll();
-
-        System.out.println(examDao.queryCount());
-
-        //examDao.save(exams);
+        examDao.backup();
 
     }
 }

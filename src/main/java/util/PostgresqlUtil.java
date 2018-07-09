@@ -41,14 +41,24 @@ public class PostgresqlUtil {
     }
 
     public static void close(Connection conn, PreparedStatement pstm) throws SQLException {
-        pstm.close();
-        conn.close();
+        if (pstm != null) {
+            pstm.close();
+        }
+        if (conn != null) {
+            conn.close();
+        }
     }
 
     public static void close(Connection conn, ResultSet rs, PreparedStatement pstm) throws SQLException {
-        pstm.close();
-        rs.close();
-        conn.close();
+        if (pstm != null) {
+            pstm.close();
+        }
+        if (rs != null) {
+            rs.close();
+        }
+        if (conn != null) {
+            conn.close();
+        }
     }
 }
 
