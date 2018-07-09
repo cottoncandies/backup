@@ -1,9 +1,7 @@
 package dao;
 
-import java.util.List;
+public interface BaseDao{
 
-public interface BaseDao<T> {
-    List<T> queryAll();
+    void backup();
 
-    void save(List<T> list);
 }
