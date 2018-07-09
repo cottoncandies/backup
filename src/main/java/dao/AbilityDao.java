@@ -1,89 +1,74 @@
 package dao;
 
-import entity.Ability;
 import util.MysqlUtil;
 import util.PostgresqlUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
-public class AbilityDao implements BaseDao<Ability> {
+public class AbilityDao implements BaseDao {
 
     String selectSql = "SELECT * FROM sys_ability_t";
     String insertSql = "insert into sys_ability_t(ng_id,nt_section,ng_subject_id,sz_caption,nt_state,tx_comment,nt_old_id) values(?,?,?,?,?,?,?)";
 
-    public List<Ability> queryAll() {
+    public void backup() {
+        Connection PostgresqlConn = null;
+        Connection mysqlConn = null;
 
-        List<Ability> abilities = null;
-        Ability ability = null;
+        PreparedStatement PostgresqlPstm = null;
+        PreparedStatement mysqlPstm = null;
+
+        ResultSet rs = null;
 
         try {
-            //1.获取postgresql连接
-            Connection conn = PostgresqlUtil.getConnection();
+            //1.获取Connection连接
+            PostgresqlConn = PostgresqlUtil.getConnection();
+            mysqlConn = MysqlUtil.getConnection();
+
+            //设置AutoCommit属性为false,这个一定要用
+            //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
+            //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
+            PostgresqlConn.setAutoCommit(false);
+
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(selectSql);
+            PostgresqlPstm = PostgresqlConn.prepareStatement(selectSql,ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY);
+            PostgresqlPstm.setFetchSize(10);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
+
+            mysqlPstm = mysqlConn.prepareStatement(insertSql);
+
 
             // 3.执行sql语句
-            ResultSet rs = st.executeQuery();
+            rs = PostgresqlPstm.executeQuery();
 
-            // 4.处理数据
-            abilities = new ArrayList<Ability>();
             while (rs.next()) {
-                ability = new Ability();
-                ability.setNg_id(rs.getLong("ng_id"));
-                ability.setSz_caption(rs.getString("sz_caption"));
-                ability.setNg_subject_id(rs.getLong("ng_subject_id"));
-                ability.setNt_section(rs.getInt("nt_section"));
-                ability.setNt_state(rs.getInt("nt_state"));
-                ability.setTx_comment(rs.getString("tx_comment"));
-                ability.setNt_old_id(rs.getInt("nt_old_id"));
-                abilities.add(ability);
-            }
 
-            // 5.释放资源
-            PostgresqlUtil.close(conn, rs, st);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return abilities;
-    }
-
-    public void save(List<Ability> list) {
-        try {
-            //1.获取mysql连接
-            Connection conn = MysqlUtil.getConnection();
-
-            PreparedStatement st = null;
-
-            for (Ability ability : list) {
-
-                // 2.获取SQL执行者
-                st = conn.prepareStatement(insertSql);
-
-                st.setLong(1, ability.getNg_id());
-                st.setInt(2, ability.getNt_section());
-                st.setLong(3, ability.getNg_subject_id());
-                st.setString(4, ability.getSz_caption());
-                st.setInt(5, ability.getNt_state());
-                st.setString(6, ability.getTx_comment());
-                st.setInt(7, ability.getNt_old_id());
+                mysqlPstm.setLong(1, rs.getLong("ng_id"));
+                mysqlPstm.setInt(2, rs.getInt("nt_section"));
+                mysqlPstm.setLong(3, rs.getLong("ng_subject_id"));
+                mysqlPstm.setString(4, rs.getString("sz_caption"));
+                mysqlPstm.setInt(5, rs.getInt("nt_state"));
+                mysqlPstm.setString(6, rs.getString("tx_comment"));
+                mysqlPstm.setInt(7, rs.getInt("nt_old_id"));
 
                 // 3.执行sql语句
-                st.executeUpdate();
+                mysqlPstm.executeUpdate();
 
             }
-
-            // 5.释放资源
-            MysqlUtil.close(conn, st);
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            // 5.释放资源
+            try {
+                PostgresqlUtil.close(PostgresqlConn, rs, PostgresqlPstm);
+                MysqlUtil.close(mysqlConn, mysqlPstm);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-
 }
