@@ -14,8 +14,8 @@ import java.util.List;
 
 public class MyPaperDao implements BaseDao<MyPaper> {
 
-    String sleectSql = "SELECT * FROM sys_mypaper_t";
-    String insertSql = "insert into sys_mypaper_t(ng_id,ng_user_id,ng_subject_id, sz_caption, sz_scope, sz_time_len, sz_person, tx_data,  sz_file_store,  sz_answer_store, nt_section,  nt_grade, nt_total, nt_download_times,  nt_title_bar,  nt_info_bar,  nt_input_bar,  nt_tongfen_bar,  nt_show_answer,  nt_show_defen,  nt_file_kind,  nt_pingfen_bar,  nt_page_size,  nt_state,  ts_finished) " +
+    String selectSql = "SELECT * FROM sys_my_paper_t";
+    String insertSql = "insert into sys_my_paper_t(ng_id,ng_user_id,ng_subject_id, sz_caption, sz_scope, sz_time_len, sz_person, tx_data,  sz_file_store,  sz_answer_store, nt_section,  nt_grade, nt_total, nt_download_times,  nt_title_bar,  nt_info_bar,  nt_input_bar,  nt_tongfen_bar,  nt_show_answer,  nt_show_defen,  nt_file_kind,  nt_pingfen_bar,  nt_page_size,  nt_state,  ts_finished) " +
             "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public List<MyPaper> queryAll() {
@@ -27,7 +27,7 @@ public class MyPaperDao implements BaseDao<MyPaper> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();
@@ -109,7 +109,11 @@ public class MyPaperDao implements BaseDao<MyPaper> {
                 st.setInt(22, myPaper.getNt_pingfen_bar());
                 st.setInt(23, myPaper.getNt_page_size());
                 st.setInt(24, myPaper.getNt_state());
-                st.setDate(25, new java.sql.Date(myPaper.getTs_finished().getTime()));
+                if (myPaper.getTs_finished() == null) {
+                    st.setDate(25, null);
+                } else {
+                    st.setDate(25, new java.sql.Date(myPaper.getTs_finished().getTime()));
+                }
 
 
                 // 3.执行sql语句

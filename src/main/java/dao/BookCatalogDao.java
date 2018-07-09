@@ -13,8 +13,8 @@ import java.util.List;
 public class BookCatalogDao implements BaseDao<BookCatalog> {
 
 
-    String sleectSql = "SELECT * FROM sys_bookcatalog_t";
-    String insertSql = "insert into sys_bookcatalog_t(ng_id,sz_num,sz_parent_num,sz_caption,ng_parent_id,nt_section,ng_subject_id,nt_grade,nt_serial,sz_descr,nt_show,tx_comment,nt_old_id) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String selectSql = "SELECT * FROM sys_book_catalog_t";
+    String insertSql = "insert into sys_book_catalog_t(ng_id,sz_num,sz_parent_num,sz_caption,ng_parent_id,nt_section,ng_subject_id,nt_grade,nt_serial,sz_descr,nt_show,tx_comment,nt_old_id) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public List<BookCatalog> queryAll() {
         List<BookCatalog> bookCatalogs = null;
@@ -25,7 +25,7 @@ public class BookCatalogDao implements BaseDao<BookCatalog> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

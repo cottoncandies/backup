@@ -11,9 +11,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExamDao implements BaseDao<Exam>{
+public class ExamDao implements BaseDao<Exam> {
 
-    String sleectSql = "SELECT * FROM sys_exam_t";
+    String selectCountSql = "SELECT count(*) FROM sys_exam_t";
+    String selectSql = "SELECT * FROM sys_exam_t limit ? offset ?";
     String insertSql = "insert into sys_exam_t(ng_id,ng_parent_id,ng_cat_id,ng_subject_id,ng_kind_id, sz_cat_full,  sz_prov, sz_city, sz_infor_src, sz_age, sz_infor_kind,  sz_wenli, sz_must,  sz_chart_kind, sz_paper_num,  sz_pager_level,  sz_paper_age, sz_paper_index,  tx_keywords, sz_listen,  tx_comment,  sz_kp_cap2,  tx_comment2, tx_err_descr,  sz_old_textbook, sz_chapter, sz_segment,  sz_edition, sz_kind_name,  sz_abi_cap, sz_kp_cap, tx_mingti,  tx_answer, tx_xuanxiang,  tx_jiexi, tx_tigan,  nt_num, nt_parent_num,  nt_sub_index,  nt_section,  nt_grade,  nt_term,  nt_deep,  nt_read_time,  nt_answer_time,  nt_score,  nt_objective,  nt_infor_trans,  nt_in_paper,  nt_view_times, nt_using_times,  nt_audit,  nt_state, ts_created, ts_updated, ts_auditing) " +
             "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -26,7 +27,7 @@ public class ExamDao implements BaseDao<Exam>{
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();
@@ -184,5 +185,33 @@ public class ExamDao implements BaseDao<Exam>{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int queryCount() {
+
+        int count = 0;
+
+        try {
+            //1.获取postgresql连接
+            Connection conn = PostgresqlUtil.getConnection();
+
+            // 2.获取SQL执行者
+            PreparedStatement st = conn.prepareStatement(selectCountSql);
+
+            // 3.执行sql语句
+            ResultSet rs = st.executeQuery();
+
+            // 4.处理数据
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+
+            // 5.释放资源
+            PostgresqlUtil.close(conn, rs, st);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

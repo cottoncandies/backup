@@ -13,7 +13,7 @@ import java.util.List;
 
 public class FavoriteDao implements BaseDao<Favorite> {
 
-    String sleectSql = "SELECT * FROM sys_favorite_t";
+    String selectSql = "SELECT * FROM sys_favorite_t";
     String insertSql = "insert into sys_favorite_t(ng_id,ng_user_id,ng_subject_id,ng_exam_id,nt_section,ts_created) values(?,?,?,?,?,?)";
 
     public List<Favorite> queryAll() {
@@ -25,7 +25,7 @@ public class FavoriteDao implements BaseDao<Favorite> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

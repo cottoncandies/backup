@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SubjectDao implements BaseDao<Subject> {
 
-    String sleectSql = "SELECT * FROM sys_subject_t";
+    String selectSql = "SELECT * FROM sys_subject_t";
     String insertSql = "insert into sys_subject_t(ng_id,sz_caption,sz_sections) values(?,?,?)";
 
     public List<Subject> queryAll() {
@@ -24,7 +24,7 @@ public class SubjectDao implements BaseDao<Subject> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

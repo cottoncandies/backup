@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserDao implements BaseDao<User> {
 
-    String sleectSql = "SELECT * FROM sys_user_t";
+    String selectSql = "SELECT * FROM sys_user_t";
     String insertSql = "insert into sys_user_t(ng_id,sz_username,sz_password,nt_section,ng_subject_id,sz_nickname) values(?,?,?,?,?,?)";
 
     public List<User> queryAll() {
@@ -24,7 +24,7 @@ public class UserDao implements BaseDao<User> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

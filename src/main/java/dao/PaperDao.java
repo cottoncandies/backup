@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PaperDao implements BaseDao<Paper> {
 
-    String sleectSql = "SELECT * FROM sys_paper_t";
+    String selectSql = "SELECT * FROM sys_paper_t";
     String insertSql = "insert into sys_paper_t(ng_id,sz_num,sz_caption,sz_kind,sz_age,ng_cat_id,nt_section,ng_subject_id,sz_wenli,sz_prov,sz_city,nt_term,nt_grade,nt_score,nt_score_ex,nt_cost_resp,ts_created,ts_updated,ts_auditing,tx_comment,sz_infor_src,sz_infor_kind,nt_old_id) " +
             "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -26,7 +26,7 @@ public class PaperDao implements BaseDao<Paper> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();
@@ -98,9 +98,26 @@ public class PaperDao implements BaseDao<Paper> {
                 st.setInt(14, paper.getNt_score());
                 st.setInt(15, paper.getNt_score_ex());
                 st.setInt(16, paper.getNt_cost_resp());
-                st.setDate(17, new java.sql.Date(paper.getTs_created().getTime()));
-                st.setDate(18, new java.sql.Date(paper.getTs_updated().getTime()));
-                st.setDate(19, new java.sql.Date(paper.getTs_auditing().getTime()));
+                if (paper.getTs_created()==null) {
+                    st.setDate(17, null);
+
+                } else {
+                    st.setDate(17, new java.sql.Date(paper.getTs_created().getTime()));
+
+                }
+                if(paper.getTs_updated()==null){
+                    st.setDate(18, null);
+
+                }else {
+                    st.setDate(18, new java.sql.Date(paper.getTs_updated().getTime()));
+
+                }
+                if(paper.getTs_auditing()==null){
+                    st.setDate(19, null);
+
+                }else {
+                    st.setDate(19, new java.sql.Date(paper.getTs_auditing().getTime()));
+                }
                 st.setString(20, paper.getTx_comment());
                 st.setString(21, paper.getSz_infor_src());
                 st.setString(22, paper.getSz_infor_kind());

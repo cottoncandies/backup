@@ -1,5 +1,5 @@
-import dao.AbilityDao;
-import entity.Ability;
+import dao.*;
+import entity.*;
 
 import java.util.List;
 
@@ -11,13 +11,54 @@ public class Mytest {
     }
 
     public static void selectFunction() {
-        AbilityDao dao = new AbilityDao();
-        List<Ability> abilities = dao.queryAll();
-        for (Ability a : abilities) {
-            System.out.println(a);
-        }
-        //List<Ability> abilities = Arrays.asList(new Ability(1L, 1, 1L, "1", 1,"1", 1),new Ability(2L, 1, 1L, "1", 1,"1", 1));
-        dao.save(abilities);
+        //AbilityDao abilityDao = new AbilityDao();
+        BookCatalogDao bookCatalogDao = new BookCatalogDao();
+        ExamAbiDao examAbiDao = new ExamAbiDao();
+        ExamDao examDao = new ExamDao();
+        ExamKindDao examKindDao = new ExamKindDao();
+        ExamKpDao examKpDao = new ExamKpDao();
+        FavoriteDao favoriteDao = new FavoriteDao();
+        KnowPointDao knowPointDao = new KnowPointDao();
+        MyPaperDao myPaperDao = new MyPaperDao();
+        PaperDao paperDao = new PaperDao();
+        PaperExamDao paperExamDao = new PaperExamDao();
+        SubjectDao subjectDao = new SubjectDao();
+        UserDao userDao = new UserDao();
+
+
+
+        //List<Ability> abilities = abilityDao.queryAll();
+        List<BookCatalog> bookCatalogs = bookCatalogDao.queryAll();
+        List<ExamAbi> examAbis = examAbiDao.queryAll();
+        List<Exam> exams = examDao.queryAll();
+        List<ExamKind> examKinds = examKindDao.queryAll();
+        List<ExamKp> examKps = examKpDao.queryAll();
+        List<Favorite> favorites = favoriteDao.queryAll();
+        List<KnowPoint> knowPoints = knowPointDao.queryAll();
+        List<MyPaper> myPapers = myPaperDao.queryAll();
+        List<Paper> papers = paperDao.queryAll();
+        List<PaperExam> paperExams = paperExamDao.queryAll();
+        List<Subject> subjects = subjectDao.queryAll();
+        List<User> users = userDao.queryAll();
+
+
+
+
+
+
+        //abilityDao.save(abilities);
+        bookCatalogDao.save(bookCatalogs);
+        examAbiDao.save(examAbis);
+        examDao.save(exams);
+        examKindDao.save(examKinds);
+        examKpDao.save(examKps);
+        favoriteDao.save(favorites);
+        knowPointDao.save(knowPoints);
+        myPaperDao.save(myPapers);
+        paperDao.save(papers);
+        paperExamDao.save(paperExams);
+        subjectDao.save(subjects);
+        userDao.save(users);
     }
 }
 

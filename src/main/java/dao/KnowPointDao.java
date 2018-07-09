@@ -12,8 +12,8 @@ import java.util.List;
 
 public class KnowPointDao implements BaseDao<KnowPoint> {
 
-    String sleectSql = "SELECT * FROM sys_knowpoint_t";
-    String insertSql = "insert into sys_knowpoint_t(ng_id,ng_parent_id,ng_subject_id,sz_num,sz_caption,tx_comment,nt_section,nt_state,nt_old_id) values(?,?,?,?,?,?,?,?,?)";
+    String selectSql = "SELECT * FROM sys_know_point_t";
+    String insertSql = "insert into sys_know_point_t(ng_id,ng_parent_id,ng_subject_id,sz_num,sz_caption,tx_comment,nt_section,nt_state,nt_old_id) values(?,?,?,?,?,?,?,?,?)";
 
     public List<KnowPoint> queryAll() {
         List<KnowPoint> knowPoints = null;
@@ -24,7 +24,7 @@ public class KnowPointDao implements BaseDao<KnowPoint> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();
@@ -74,7 +74,7 @@ public class KnowPointDao implements BaseDao<KnowPoint> {
                 st.setString(6, knowPoint.getTx_comment());
                 st.setInt(7, knowPoint.getNt_section());
                 st.setInt(8, knowPoint.getNt_state());
-                st.setInt(7, knowPoint.getNt_old_id());
+                st.setInt(9, knowPoint.getNt_old_id());
 
                 // 3.执行sql语句
                 st.executeUpdate();

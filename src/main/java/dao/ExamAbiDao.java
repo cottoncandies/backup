@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ExamAbiDao implements BaseDao<ExamAbi> {
 
-    String sleectSql = "SELECT * FROM sys_examabi_t";
-    String insertSql = "insert into sys_examabi_t(ng_id,ng_exam_id,ng_abi_id) values(?,?,?)";
+    String selectSql = "SELECT * FROM sys_exam_abi_t";
+    String insertSql = "insert into sys_exam_abi_t(ng_id,ng_exam_id,ng_abi_id) values(?,?,?)";
 
     public List<ExamAbi> queryAll() {
         List<ExamAbi> examAbis = null;
@@ -24,7 +24,7 @@ public class ExamAbiDao implements BaseDao<ExamAbi> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

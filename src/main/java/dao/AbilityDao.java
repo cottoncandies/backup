@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AbilityDao implements BaseDao<Ability> {
 
-    String sleectSql = "SELECT * FROM sys_ability_t";
+    String selectSql = "SELECT * FROM sys_ability_t";
     String insertSql = "insert into sys_ability_t(ng_id,nt_section,ng_subject_id,sz_caption,nt_state,tx_comment,nt_old_id) values(?,?,?,?,?,?,?)";
 
     public List<Ability> queryAll() {
@@ -25,7 +25,7 @@ public class AbilityDao implements BaseDao<Ability> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

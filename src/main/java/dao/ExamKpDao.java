@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ExamKpDao implements BaseDao<ExamKp> {
 
-    String sleectSql = "SELECT * FROM sys_examkp_t";
-    String insertSql = "insert into sys_examkp_t(ng_id,ng_exam_id,ng_kp_id,nt_old_id) values(?,?,?,?)";
+    String selectSql = "SELECT * FROM sys_exam_kp_t";
+    String insertSql = "insert into sys_exam_kp_t(ng_id,ng_exam_id,ng_kp_id,nt_old_id) values(?,?,?,?)";
 
     public List<ExamKp> queryAll() {
         List<ExamKp> examKps = null;
@@ -24,7 +24,7 @@ public class ExamKpDao implements BaseDao<ExamKp> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();

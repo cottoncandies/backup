@@ -12,8 +12,8 @@ import java.util.List;
 
 public class PaperExamDao implements BaseDao<PaperExam> {
 
-    String sleectSql = "SELECT * FROM sys_paperexam_t";
-    String insertSql = "insert into sys_paperexam_t(ng_id,ng_paper_id,ng_exam_id,nt_index,nt_old_id,sz_kind,tx_comment) values(?,?,?,?,?,?,?)";
+    String selectSql = "SELECT * FROM sys_paper_exam_t";
+    String insertSql = "insert into sys_paper_exam_t(ng_id,ng_paper_id,ng_exam_id,nt_index,nt_old_id,sz_kind,tx_comment) values(?,?,?,?,?,?,?)";
 
     public List<PaperExam> queryAll() {
         List<PaperExam> paperExams = null;
@@ -24,7 +24,7 @@ public class PaperExamDao implements BaseDao<PaperExam> {
             Connection conn = PostgresqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(sleectSql);
+            PreparedStatement st = conn.prepareStatement(selectSql);
 
             // 3.执行sql语句
             ResultSet rs = st.executeQuery();
