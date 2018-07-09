@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bdff9f8d-7fd8-4bca-9389-c014338d935c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BaseDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/BaseDao.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/mysql.properties" afterPath="$PROJECT_DIR$/target/classes/mysql.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -502,7 +501,7 @@
       <workItem from="1530839481379" duration="955000" />
       <workItem from="1531025673220" duration="26980000" />
       <workItem from="1531114899034" duration="9632000" />
-      <workItem from="1531124843101" duration="7177000" />
+      <workItem from="1531124843101" duration="7223000" />
     </task>
     <task id="LOCAL-00001" summary="paper.java">
       <created>1530840330642</created>
@@ -588,11 +587,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531133280321</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="修改BaseDao">
+      <created>1531133559270</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1531133559270</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94990000" />
+    <option name="totallyTimeSpent" value="95036000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -684,7 +690,8 @@
     <MESSAGE value="代码逻辑优化" />
     <MESSAGE value="测试" />
     <MESSAGE value="解决大数据量数据读写时出现java.lang.OutOfMemoryError: Java heap space" />
-    <option name="LAST_COMMIT_MESSAGE" value="解决大数据量数据读写时出现java.lang.OutOfMemoryError: Java heap space" />
+    <MESSAGE value="修改BaseDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改BaseDao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
