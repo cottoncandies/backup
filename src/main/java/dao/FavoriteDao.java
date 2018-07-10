@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoriteDao implements BaseDao<Favorite> {
+public class FavoriteDao {
 
     String selectSql = "SELECT * FROM sys_favorite_t";
     String insertSql = "insert into sys_favorite_t(ng_id,ng_user_id,ng_subject_id,ng_exam_id,nt_section,ts_created) values(?,?,?,?,?,?)";

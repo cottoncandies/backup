@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExamKpDao implements BaseDao<ExamKp> {
+public class ExamKpDao {
 
     String selectSql = "SELECT * FROM sys_exam_kp_t";
     String insertSql = "insert into sys_exam_kp_t(ng_id,ng_exam_id,ng_kp_id,nt_old_id) values(?,?,?,?)";

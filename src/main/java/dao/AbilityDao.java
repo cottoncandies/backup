@@ -14,7 +14,8 @@ public class AbilityDao implements BaseDao {
     String insertSql = "insert into sys_ability_t(ng_id,nt_section,ng_subject_id,sz_caption,nt_state,tx_comment,nt_old_id) values(?,?,?,?,?,?,?)";
 
     public void backup() {
-        Connection PostgresqlConn = null;
+
+        Connection postgresqlConn = null;
         Connection mysqlConn = null;
 
         PreparedStatement PostgresqlPstm = null;
@@ -24,19 +25,19 @@ public class AbilityDao implements BaseDao {
 
         try {
             //1.获取Connection连接
-            PostgresqlConn = PostgresqlUtil.getConnection();
+            postgresqlConn = PostgresqlUtil.getConnection();
             mysqlConn = MysqlUtil.getConnection();
 
             //设置AutoCommit属性为false,这个一定要用
             //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
             //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
-            PostgresqlConn.setAutoCommit(false);
+            postgresqlConn.setAutoCommit(false);
 
 
             // 2.获取SQL执行者
-            PostgresqlPstm = PostgresqlConn.prepareStatement(selectSql,ResultSet.TYPE_FORWARD_ONLY,
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql,ResultSet.TYPE_FORWARD_ONLY,
                     ResultSet.CONCUR_READ_ONLY);
-            PostgresqlPstm.setFetchSize(10);
+            PostgresqlPstm.setFetchSize(1000);
             PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
 
             mysqlPstm = mysqlConn.prepareStatement(insertSql);
@@ -64,7 +65,7 @@ public class AbilityDao implements BaseDao {
         } finally {
             // 5.释放资源
             try {
-                PostgresqlUtil.close(PostgresqlConn, rs, PostgresqlPstm);
+                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
                 MysqlUtil.close(mysqlConn, mysqlPstm);
             } catch (SQLException e) {
                 e.printStackTrace();

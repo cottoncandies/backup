@@ -2,6 +2,6 @@ package dao;
 
 public interface BaseDao{
 
-    void backup();
+    //void setInsertSqlParam();
 
 }

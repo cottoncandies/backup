@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectDao implements BaseDao<Subject> {
+public class SubjectDao {
 
     String selectSql = "SELECT * FROM sys_subject_t";
     String insertSql = "insert into sys_subject_t(ng_id,sz_caption,sz_sections) values(?,?,?)";

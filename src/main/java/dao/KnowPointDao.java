@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KnowPointDao implements BaseDao<KnowPoint> {
+public class KnowPointDao {
 
     String selectSql = "SELECT * FROM sys_know_point_t";
     String insertSql = "insert into sys_know_point_t(ng_id,ng_parent_id,ng_subject_id,sz_num,sz_caption,tx_comment,nt_section,nt_state,nt_old_id) values(?,?,?,?,?,?,?,?,?)";

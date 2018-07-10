@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaperDao implements BaseDao<Paper> {
+public class PaperDao {
 
     String selectSql = "SELECT * FROM sys_paper_t";
     String insertSql = "insert into sys_paper_t(ng_id,sz_num,sz_caption,sz_kind,sz_age,ng_cat_id,nt_section,ng_subject_id,sz_wenli,sz_prov,sz_city,nt_term,nt_grade,nt_score,nt_score_ex,nt_cost_resp,ts_created,ts_updated,ts_auditing,tx_comment,sz_infor_src,sz_infor_kind,nt_old_id) " +

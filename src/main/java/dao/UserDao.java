@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao {
+public class UserDao extends CommonBackup {
 
     String selectSql = "SELECT * FROM sys_user_t";
     String insertSql = "insert into sys_user_t(ng_id,sz_username,sz_password,nt_section,ng_subject_id,sz_nickname) values(?,?,?,?,?,?)";
@@ -16,7 +16,7 @@ public class UserDao {
     public void backup() {
 
 
-        Connection PostgresqlConn = null;
+        Connection postgresqlConn = null;
         Connection mysqlConn = null;
 
         PreparedStatement PostgresqlPstm = null;
@@ -26,11 +26,11 @@ public class UserDao {
 
         try {
             //1.获取Connection连接
-            PostgresqlConn = PostgresqlUtil.getConnection();
+            postgresqlConn = PostgresqlUtil.getConnection();
             mysqlConn = MysqlUtil.getConnection();
 
             // 2.获取SQL执行者
-            PostgresqlPstm = PostgresqlConn.prepareStatement(selectSql);
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql);
             mysqlPstm = mysqlConn.prepareStatement(insertSql);
 
             // 3.执行sql语句
@@ -56,7 +56,7 @@ public class UserDao {
 
             try {
                 // 5.释放资源
-                PostgresqlUtil.close(PostgresqlConn, rs, PostgresqlPstm);
+                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
                 MysqlUtil.close(mysqlConn, mysqlPstm);
             } catch (SQLException e) {
                 e.printStackTrace();

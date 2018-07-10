@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExamAbiDao implements BaseDao<ExamAbi> {
+public class ExamAbiDao  {
 
     String selectSql = "SELECT * FROM sys_exam_abi_t";
     String insertSql = "insert into sys_exam_abi_t(ng_id,ng_exam_id,ng_abi_id) values(?,?,?)";

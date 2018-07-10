@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookCatalogDao implements BaseDao<BookCatalog> {
+public class BookCatalogDao {
 
 
     String selectSql = "SELECT * FROM sys_book_catalog_t";
@@ -98,4 +98,5 @@ public class BookCatalogDao implements BaseDao<BookCatalog> {
             e.printStackTrace();
         }
     }
+
 }

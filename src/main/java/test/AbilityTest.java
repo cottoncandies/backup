@@ -15,9 +15,8 @@ public class AbilityTest {
     public static void selectFunction() {
         AbilityDao abilityDao = new AbilityDao();
 
-        List<Ability> abilities = abilityDao.queryAll();
+        abilityDao.backup();
 
-        abilityDao.save(abilities);
 
     }
 }
