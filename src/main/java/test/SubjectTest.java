@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.SubjectDao;
 
 public class SubjectTest {
 
@@ -16,9 +13,7 @@ public class SubjectTest {
 
         SubjectDao subjectDao = new SubjectDao();
 
-        List<Subject> subjects = subjectDao.queryAll();
-
-        subjectDao.save(subjects);
+        subjectDao.backup();
     }
 }
 

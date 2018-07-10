@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.AbilityDao;
 
 public class AbilityTest {
 
@@ -16,7 +13,6 @@ public class AbilityTest {
         AbilityDao abilityDao = new AbilityDao();
 
         abilityDao.backup();
-
 
     }
 }

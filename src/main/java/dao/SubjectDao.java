@@ -1,79 +1,83 @@
 package dao;
 
-import entity.Subject;
 import util.MysqlUtil;
 import util.PostgresqlUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class SubjectDao {
 
     String selectSql = "SELECT * FROM sys_subject_t";
     String insertSql = "insert into sys_subject_t(ng_id,sz_caption,sz_sections) values(?,?,?)";
 
-    public List<Subject> queryAll() {
-        List<Subject> subjects = null;
-        Subject subject = null;
+    public void backup() {
+
+        Connection postgresqlConn = null;
+        Connection mysqlConn = null;
+
+        PreparedStatement PostgresqlPstm = null;
+        PreparedStatement mysqlPstm = null;
+
+        ResultSet rs = null;
+
+        int count = 0;
 
         try {
-            //1.获取postgresql连接
-            Connection conn = PostgresqlUtil.getConnection();
+            //1.获取Connection连接
+            postgresqlConn = PostgresqlUtil.getConnection();
+            mysqlConn = MysqlUtil.getConnection();
+
+            //设置AutoCommit属性为false,这个一定要用
+            //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
+            //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
+            postgresqlConn.setAutoCommit(false);
+            mysqlConn.setAutoCommit(false);
+
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(selectSql);
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql, ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY);
+            PostgresqlPstm.setFetchSize(1000);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
+
+            mysqlPstm = mysqlConn.prepareStatement(insertSql);
+
 
             // 3.执行sql语句
-            ResultSet rs = st.executeQuery();
+            rs = PostgresqlPstm.executeQuery();
 
-            // 4.处理数据
-            subjects = new ArrayList<Subject>();
             while (rs.next()) {
-                subject = new Subject();
-                subject.setNg_id(rs.getLong("ng_id"));
-                subject.setSz_caption(rs.getString("sz_caption"));
-                subject.setSz_sections(rs.getString("sz_sections"));
-                subjects.add(subject);
-            }
+                count++;
+                mysqlPstm.setLong(1, rs.getLong("ng_id"));
+                mysqlPstm.setString(2, rs.getString("sz_caption"));
+                mysqlPstm.setString(3, rs.getString("sz_sections"));
 
-            // 5.释放资源
-            PostgresqlUtil.close(conn, rs, st);
+                mysqlPstm.addBatch();
+
+                if (count % 5000 == 0) {
+                    mysqlPstm.executeBatch();
+                    mysqlConn.commit();
+                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+                }
+            }
+            mysqlPstm.executeBatch();
+            //优化插入第三步       提交，批量插入数据库中。
+            mysqlConn.commit();
+            mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return subjects;
-    }
-
-    public void save(List<Subject> list) {
-        try {
-            //1.获取mysql连接
-            Connection conn = MysqlUtil.getConnection();
-
-            PreparedStatement st = null;
-
-            for (Subject subject : list) {
-
-                // 2.获取SQL执行者
-                st = conn.prepareStatement(insertSql);
-
-                st.setLong(1, subject.getNg_id());
-                st.setString(2, subject.getSz_caption());
-                st.setString(3, subject.getSz_sections());
-
-                // 3.执行sql语句
-                st.executeUpdate();
-
-            }
-
+        } finally {
             // 5.释放资源
-            MysqlUtil.close(conn, st);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
+                MysqlUtil.close(mysqlConn, mysqlPstm);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

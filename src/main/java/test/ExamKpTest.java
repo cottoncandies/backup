@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.ExamKpDao;
 
 public class ExamKpTest {
 
@@ -16,9 +13,7 @@ public class ExamKpTest {
 
         ExamKpDao examKpDao = new ExamKpDao();
 
-        List<ExamKp> examKps = examKpDao.queryAll();
-
-        examKpDao.save(examKps);
+        examKpDao.backup();
 
     }
 }

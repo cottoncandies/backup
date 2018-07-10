@@ -1,16 +1,13 @@
 package dao;
 
 
-import entity.ExamAbi;
-import entity.MyPaper;
 import util.MysqlUtil;
 import util.PostgresqlUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class MyPaperDao {
 
@@ -18,114 +15,93 @@ public class MyPaperDao {
     String insertSql = "insert into sys_my_paper_t(ng_id,ng_user_id,ng_subject_id, sz_caption, sz_scope, sz_time_len, sz_person, tx_data,  sz_file_store,  sz_answer_store, nt_section,  nt_grade, nt_total, nt_download_times,  nt_title_bar,  nt_info_bar,  nt_input_bar,  nt_tongfen_bar,  nt_show_answer,  nt_show_defen,  nt_file_kind,  nt_pingfen_bar,  nt_page_size,  nt_state,  ts_finished) " +
             "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-    public List<MyPaper> queryAll() {
-        List<MyPaper> myPapers = null;
-        MyPaper myPaper = null;
+    public void backup() {
+
+        Connection postgresqlConn = null;
+        Connection mysqlConn = null;
+
+        PreparedStatement PostgresqlPstm = null;
+        PreparedStatement mysqlPstm = null;
+
+        ResultSet rs = null;
+
+        int count = 0;
 
         try {
-            //1.获取postgresql连接
-            Connection conn = PostgresqlUtil.getConnection();
+            //1.获取Connection连接
+            postgresqlConn = PostgresqlUtil.getConnection();
+            mysqlConn = MysqlUtil.getConnection();
+
+            //设置AutoCommit属性为false,这个一定要用
+            //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
+            //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
+            postgresqlConn.setAutoCommit(false);
+            mysqlConn.setAutoCommit(false);
+
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(selectSql);
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql, ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY);
+            PostgresqlPstm.setFetchSize(1000);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
+
+            mysqlPstm = mysqlConn.prepareStatement(insertSql);
+
 
             // 3.执行sql语句
-            ResultSet rs = st.executeQuery();
+            rs = PostgresqlPstm.executeQuery();
 
-            // 4.处理数据
-            myPapers = new ArrayList<MyPaper>();
             while (rs.next()) {
-                myPaper = new MyPaper();
-                myPaper.setNg_id(rs.getLong("ng_id"));
-                myPaper.setNg_user_id(rs.getLong("ng_user_id"));
-                myPaper.setNg_subject_id(rs.getLong("ng_subject_id"));
-                myPaper.setSz_caption(rs.getString("sz_caption"));
-                myPaper.setSz_scope(rs.getString("sz_scope"));
-                myPaper.setSz_time_len(rs.getString("sz_time_len"));
-                myPaper.setSz_person(rs.getString("sz_person"));
-                myPaper.setTx_data(rs.getString("tx_data"));
-                myPaper.setSz_file_store(rs.getString("sz_file_store"));
-                myPaper.setSz_answer_store(rs.getString("sz_answer_store"));
-                myPaper.setNt_section(rs.getInt("nt_section"));
-                myPaper.setNt_grade(rs.getInt("nt_grade"));
-                myPaper.setNt_total(rs.getInt("nt_total"));
-                myPaper.setNt_download_times(rs.getInt("nt_download_times"));
-                myPaper.setNt_title_bar(rs.getInt("nt_title_bar"));
-                myPaper.setNt_info_bar(rs.getInt("nt_info_bar"));
-                myPaper.setNt_input_bar(rs.getInt("nt_input_bar"));
-                myPaper.setNt_tongfen_bar(rs.getInt("nt_tongfen_bar"));
-                myPaper.setNt_show_answer(rs.getInt("nt_show_answer"));
-                myPaper.setNt_show_defen(rs.getInt("nt_show_defen"));
-                myPaper.setNt_file_kind(rs.getInt("nt_file_kind"));
-                myPaper.setNt_pingfen_bar(rs.getInt("nt_pingfen_bar"));
-                myPaper.setNt_page_size(rs.getInt("nt_page_size"));
-                myPaper.setNt_state(rs.getInt("nt_state"));
-                myPaper.setTs_finished(rs.getDate("ts_finished"));
-                myPapers.add(myPaper);
-            }
+                count++;
+                mysqlPstm.setLong(1, rs.getLong("ng_id"));
+                mysqlPstm.setLong(2, rs.getLong("ng_user_id"));
+                mysqlPstm.setLong(3, rs.getLong("ng_subject_id"));
+                mysqlPstm.setString(4, rs.getString("sz_caption"));
+                mysqlPstm.setString(5, rs.getString("sz_scope"));
+                mysqlPstm.setString(6, rs.getString("sz_time_len"));
+                mysqlPstm.setString(7, rs.getString("sz_person"));
+                mysqlPstm.setString(8, rs.getString("tx_data"));
+                mysqlPstm.setString(9, rs.getString("sz_file_store"));
+                mysqlPstm.setString(10, rs.getString("sz_answer_store"));
+                mysqlPstm.setInt(11, rs.getInt("nt_section"));
+                mysqlPstm.setInt(12, rs.getInt("nt_grade"));
+                mysqlPstm.setInt(13, rs.getInt("nt_total"));
+                mysqlPstm.setInt(14, rs.getInt("nt_download_times"));
+                mysqlPstm.setInt(15, rs.getInt("nt_title_bar"));
+                mysqlPstm.setInt(16, rs.getInt("nt_info_bar"));
+                mysqlPstm.setInt(17, rs.getInt("nt_input_bar"));
+                mysqlPstm.setInt(18, rs.getInt("nt_tongfen_bar"));
+                mysqlPstm.setInt(19, rs.getInt("nt_show_answer"));
+                mysqlPstm.setInt(20, rs.getInt("nt_show_defen"));
+                mysqlPstm.setInt(21, rs.getInt("nt_file_kind"));
+                mysqlPstm.setInt(22, rs.getInt("nt_pingfen_bar"));
+                mysqlPstm.setInt(23, rs.getInt("nt_page_size"));
+                mysqlPstm.setInt(24, rs.getInt("nt_state"));
+                mysqlPstm.setDate(25, rs.getDate("ts_finished"));
 
-            // 5.释放资源
-            PostgresqlUtil.close(conn, rs, st);
+                mysqlPstm.addBatch();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return myPapers;
-    }
-
-    public void save(List<MyPaper> list) {
-        try {
-            //1.获取mysql连接
-            Connection conn = MysqlUtil.getConnection();
-
-            PreparedStatement st = null;
-
-            for (MyPaper myPaper : list) {
-
-                // 2.获取SQL执行者
-                st = conn.prepareStatement(insertSql);
-
-                st.setLong(1, myPaper.getNg_id());
-                st.setLong(2, myPaper.getNg_user_id());
-                st.setLong(3, myPaper.getNg_subject_id());
-                st.setString(4, myPaper.getSz_caption());
-                st.setString(5, myPaper.getSz_scope());
-                st.setString(6, myPaper.getSz_time_len());
-                st.setString(7, myPaper.getSz_person());
-                st.setString(8, myPaper.getTx_data());
-                st.setString(9, myPaper.getSz_file_store());
-                st.setString(10, myPaper.getSz_answer_store());
-                st.setInt(11, myPaper.getNt_section());
-                st.setInt(12, myPaper.getNt_grade());
-                st.setInt(13, myPaper.getNt_total());
-                st.setInt(14, myPaper.getNt_download_times());
-                st.setInt(15, myPaper.getNt_title_bar());
-                st.setInt(16, myPaper.getNt_info_bar());
-                st.setInt(17, myPaper.getNt_input_bar());
-                st.setInt(18, myPaper.getNt_tongfen_bar());
-                st.setInt(19, myPaper.getNt_show_answer());
-                st.setInt(20, myPaper.getNt_show_defen());
-                st.setInt(21, myPaper.getNt_file_kind());
-                st.setInt(22, myPaper.getNt_pingfen_bar());
-                st.setInt(23, myPaper.getNt_page_size());
-                st.setInt(24, myPaper.getNt_state());
-                if (myPaper.getTs_finished() == null) {
-                    st.setDate(25, null);
-                } else {
-                    st.setDate(25, new java.sql.Date(myPaper.getTs_finished().getTime()));
+                if (count % 5000 == 0) {
+                    mysqlPstm.executeBatch();
+                    mysqlConn.commit();
+                    mysqlPstm.clearBatch();        //提交后，Batch清空。
                 }
-
-
-                // 3.执行sql语句
-                st.executeUpdate();
-
             }
-
-            // 5.释放资源
-            MysqlUtil.close(conn, st);
+            mysqlPstm.executeBatch();
+            //优化插入第三步       提交，批量插入数据库中。
+            mysqlConn.commit();
+            mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            // 5.释放资源
+            try {
+                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
+                MysqlUtil.close(mysqlConn, mysqlPstm);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.KnowPointDao;
 
 public class KnowPointTest {
 
@@ -16,9 +13,7 @@ public class KnowPointTest {
 
         KnowPointDao knowPointDao = new KnowPointDao();
 
-        List<KnowPoint> knowPoints = knowPointDao.queryAll();
-
-        knowPointDao.save(knowPoints);
+        knowPointDao.backup();
 
     }
 }

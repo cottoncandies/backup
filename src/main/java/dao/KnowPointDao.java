@@ -1,91 +1,89 @@
 package dao;
 
-import entity.KnowPoint;
 import util.MysqlUtil;
 import util.PostgresqlUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class KnowPointDao {
 
     String selectSql = "SELECT * FROM sys_know_point_t";
     String insertSql = "insert into sys_know_point_t(ng_id,ng_parent_id,ng_subject_id,sz_num,sz_caption,tx_comment,nt_section,nt_state,nt_old_id) values(?,?,?,?,?,?,?,?,?)";
 
-    public List<KnowPoint> queryAll() {
-        List<KnowPoint> knowPoints = null;
-        KnowPoint knowPoint = null;
+    public void backup() {
+
+        Connection postgresqlConn = null;
+        Connection mysqlConn = null;
+
+        PreparedStatement PostgresqlPstm = null;
+        PreparedStatement mysqlPstm = null;
+
+        ResultSet rs = null;
+
+        int count = 0;
 
         try {
-            //1.获取postgresql连接
-            Connection conn = PostgresqlUtil.getConnection();
+            //1.获取Connection连接
+            postgresqlConn = PostgresqlUtil.getConnection();
+            mysqlConn = MysqlUtil.getConnection();
+
+            //设置AutoCommit属性为false,这个一定要用
+            //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
+            //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
+            postgresqlConn.setAutoCommit(false);
+            mysqlConn.setAutoCommit(false);
+
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(selectSql);
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql, ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY);
+            PostgresqlPstm.setFetchSize(1000);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
+
+            mysqlPstm = mysqlConn.prepareStatement(insertSql);
+
 
             // 3.执行sql语句
-            ResultSet rs = st.executeQuery();
+            rs = PostgresqlPstm.executeQuery();
 
-            // 4.处理数据
-            knowPoints = new ArrayList<KnowPoint>();
             while (rs.next()) {
-                knowPoint = new KnowPoint();
-                knowPoint.setNg_id(rs.getLong("ng_id"));
-                knowPoint.setNg_parent_id(rs.getLong("ng_parent_id"));
-                knowPoint.setNg_subject_id(rs.getLong("ng_subject_id"));
-                knowPoint.setSz_num(rs.getString("sz_num"));
-                knowPoint.setSz_caption(rs.getString("sz_caption"));
-                knowPoint.setTx_comment(rs.getString("tx_comment"));
-                knowPoint.setNt_section(rs.getInt("nt_section"));
-                knowPoint.setNt_state(rs.getInt("nt_state"));
-                knowPoint.setNt_old_id(rs.getInt("nt_old_id"));
-                knowPoints.add(knowPoint);
-            }
+                count++;
+                mysqlPstm.setLong(1, rs.getLong("ng_id"));
+                mysqlPstm.setLong(2, rs.getLong("ng_parent_id"));
+                mysqlPstm.setLong(3, rs.getLong("ng_subject_id"));
+                mysqlPstm.setString(4, rs.getString("sz_num"));
+                mysqlPstm.setString(5, rs.getString("sz_caption"));
+                mysqlPstm.setString(6, rs.getString("tx_comment"));
+                mysqlPstm.setInt(7, rs.getInt("nt_section"));
+                mysqlPstm.setInt(8, rs.getInt("nt_state"));
+                mysqlPstm.setInt(9, rs.getInt("nt_old_id"));
 
-            // 5.释放资源
-            PostgresqlUtil.close(conn, rs, st);
+                mysqlPstm.addBatch();
+
+                if (count % 5000 == 0) {
+                    mysqlPstm.executeBatch();
+                    mysqlConn.commit();
+                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+                }
+            }
+            mysqlPstm.executeBatch();
+            //优化插入第三步       提交，批量插入数据库中。
+            mysqlConn.commit();
+            mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return knowPoints;
-    }
-
-    public void save(List<KnowPoint> list) {
-        try {
-            //1.获取mysql连接
-            Connection conn = MysqlUtil.getConnection();
-
-            PreparedStatement st = null;
-
-            for (KnowPoint knowPoint : list) {
-
-                // 2.获取SQL执行者
-                st = conn.prepareStatement(insertSql);
-
-                st.setLong(1, knowPoint.getNg_id());
-                st.setLong(2, knowPoint.getNg_parent_id());
-                st.setLong(3, knowPoint.getNg_subject_id());
-                st.setString(4, knowPoint.getSz_num());
-                st.setString(5, knowPoint.getSz_caption());
-                st.setString(6, knowPoint.getTx_comment());
-                st.setInt(7, knowPoint.getNt_section());
-                st.setInt(8, knowPoint.getNt_state());
-                st.setInt(9, knowPoint.getNt_old_id());
-
-                // 3.执行sql语句
-                st.executeUpdate();
-
-            }
-
+        } finally {
             // 5.释放资源
-            MysqlUtil.close(conn, st);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
+                MysqlUtil.close(mysqlConn, mysqlPstm);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

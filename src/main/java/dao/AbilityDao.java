@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AbilityDao implements BaseDao {
+public class AbilityDao {
 
     String selectSql = "SELECT * FROM sys_ability_t";
     String insertSql = "insert into sys_ability_t(ng_id,nt_section,ng_subject_id,sz_caption,nt_state,tx_comment,nt_old_id) values(?,?,?,?,?,?,?)";
@@ -23,6 +23,8 @@ public class AbilityDao implements BaseDao {
 
         ResultSet rs = null;
 
+        int count = 0;
+
         try {
             //1.获取Connection连接
             postgresqlConn = PostgresqlUtil.getConnection();
@@ -32,10 +34,11 @@ public class AbilityDao implements BaseDao {
             //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
             //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
             postgresqlConn.setAutoCommit(false);
+            mysqlConn.setAutoCommit(false);
 
 
             // 2.获取SQL执行者
-            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql,ResultSet.TYPE_FORWARD_ONLY,
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql, ResultSet.TYPE_FORWARD_ONLY,
                     ResultSet.CONCUR_READ_ONLY);
             PostgresqlPstm.setFetchSize(1000);
             PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
@@ -47,7 +50,7 @@ public class AbilityDao implements BaseDao {
             rs = PostgresqlPstm.executeQuery();
 
             while (rs.next()) {
-
+                count++;
                 mysqlPstm.setLong(1, rs.getLong("ng_id"));
                 mysqlPstm.setInt(2, rs.getInt("nt_section"));
                 mysqlPstm.setLong(3, rs.getLong("ng_subject_id"));
@@ -55,11 +58,19 @@ public class AbilityDao implements BaseDao {
                 mysqlPstm.setInt(5, rs.getInt("nt_state"));
                 mysqlPstm.setString(6, rs.getString("tx_comment"));
                 mysqlPstm.setInt(7, rs.getInt("nt_old_id"));
+                mysqlPstm.addBatch();
 
-                // 3.执行sql语句
-                mysqlPstm.executeUpdate();
-
+                if (count % 5000 == 0) {
+                    mysqlPstm.executeBatch();
+                    mysqlConn.commit();
+                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+                }
             }
+            mysqlPstm.executeBatch();
+            //优化插入第三步       提交，批量插入数据库中。
+            mysqlConn.commit();
+            mysqlPstm.clearBatch();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

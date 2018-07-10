@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.ExamAbiDao;
 
 public class ExamAbiTest {
 
@@ -16,9 +13,7 @@ public class ExamAbiTest {
 
         ExamAbiDao examAbiDao = new ExamAbiDao();
 
-        List<ExamAbi> examAbis = examAbiDao.queryAll();
-
-        examAbiDao.save(examAbis);
+        examAbiDao.backup();
 
     }
 }

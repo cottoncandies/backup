@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.PaperExamDao;
 
 public class PapaerExamTest {
 
@@ -16,9 +13,7 @@ public class PapaerExamTest {
 
         PaperExamDao paperExamDao = new PaperExamDao();
 
-        List<PaperExam> paperExams = paperExamDao.queryAll();
-
-        paperExamDao.save(paperExams);
+        paperExamDao.backup();
 
     }
 }

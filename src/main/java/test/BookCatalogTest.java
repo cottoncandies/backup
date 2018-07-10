@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.BookCatalogDao;
 
 public class BookCatalogTest {
 
@@ -16,9 +13,7 @@ public class BookCatalogTest {
 
         BookCatalogDao bookCatalogDao = new BookCatalogDao();
 
-        List<BookCatalog> bookCatalogs = bookCatalogDao.queryAll();
-
-        bookCatalogDao.save(bookCatalogs);
+        bookCatalogDao.backup();
 
     }
 }

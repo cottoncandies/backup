@@ -1,9 +1,6 @@
 package test;
 
-import dao.*;
-import entity.*;
-
-import java.util.List;
+import dao.FavoriteDao;
 
 public class FavoriteTest {
 
@@ -16,9 +13,7 @@ public class FavoriteTest {
 
         FavoriteDao favoriteDao = new FavoriteDao();
 
-        List<Favorite> favorites = favoriteDao.queryAll();
-
-        favoriteDao.save(favorites);
+        favoriteDao.backup();
 
     }
 }

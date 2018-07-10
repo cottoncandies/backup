@@ -1,15 +1,13 @@
 package dao;
 
 
-import entity.Paper;
 import util.MysqlUtil;
 import util.PostgresqlUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class PaperDao {
 
@@ -17,122 +15,91 @@ public class PaperDao {
     String insertSql = "insert into sys_paper_t(ng_id,sz_num,sz_caption,sz_kind,sz_age,ng_cat_id,nt_section,ng_subject_id,sz_wenli,sz_prov,sz_city,nt_term,nt_grade,nt_score,nt_score_ex,nt_cost_resp,ts_created,ts_updated,ts_auditing,tx_comment,sz_infor_src,sz_infor_kind,nt_old_id) " +
             "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-    public List<Paper> queryAll() {
-        List<Paper> papers = null;
-        Paper paper = null;
+    public void backup() {
+
+        Connection postgresqlConn = null;
+        Connection mysqlConn = null;
+
+        PreparedStatement PostgresqlPstm = null;
+        PreparedStatement mysqlPstm = null;
+
+        ResultSet rs = null;
+
+        int count = 0;
 
         try {
-            //1.获取postgresql连接
-            Connection conn = PostgresqlUtil.getConnection();
+            //1.获取Connection连接
+            postgresqlConn = PostgresqlUtil.getConnection();
+            mysqlConn = MysqlUtil.getConnection();
+
+            //设置AutoCommit属性为false,这个一定要用
+            //配合设置setFetchSize(10)   setFetchDirection(ResultSet.FETCH_FORWARD)等属性
+            //避免大量数据读写时出现java.lang.OutOfMemoryError: Java heap space
+            postgresqlConn.setAutoCommit(false);
+            mysqlConn.setAutoCommit(false);
+
 
             // 2.获取SQL执行者
-            PreparedStatement st = conn.prepareStatement(selectSql);
+            PostgresqlPstm = postgresqlConn.prepareStatement(selectSql, ResultSet.TYPE_FORWARD_ONLY,
+                    ResultSet.CONCUR_READ_ONLY);
+            PostgresqlPstm.setFetchSize(1000);
+            PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
+
+            mysqlPstm = mysqlConn.prepareStatement(insertSql);
+
 
             // 3.执行sql语句
-            ResultSet rs = st.executeQuery();
+            rs = PostgresqlPstm.executeQuery();
 
-            // 4.处理数据
-            papers = new ArrayList<Paper>();
             while (rs.next()) {
-                paper = new Paper();
-                paper.setNg_id(rs.getLong("ng_id"));
-                paper.setSz_num(rs.getString("sz_num"));
-                paper.setSz_caption(rs.getString("sz_caption"));
-                paper.setSz_kind(rs.getString("sz_kind"));
-                paper.setSz_age(rs.getString("sz_age"));
-                paper.setNg_cat_id(rs.getLong("ng_cat_id"));
-                paper.setNt_section(rs.getInt("nt_section"));
-                paper.setNg_subject_id(rs.getLong("ng_subject_id"));
-                paper.setSz_wenli(rs.getString("sz_wenli"));
-                paper.setSz_prov(rs.getString("sz_prov"));
-                paper.setSz_city(rs.getString("sz_city"));
-                paper.setNt_term(rs.getInt("nt_term"));
-                paper.setNt_grade(rs.getInt("nt_grade"));
-                paper.setNt_score(rs.getInt("nt_score"));
-                paper.setNt_score_ex(rs.getInt("nt_score_ex"));
-                paper.setNt_cost_resp(rs.getInt("nt_cost_resp"));
-                paper.setTs_created(rs.getDate("ts_created"));
-                paper.setTs_updated(rs.getDate("ts_updated"));
-                paper.setTs_auditing(rs.getDate("ts_auditing"));
-                paper.setTx_comment(rs.getString("tx_comment"));
-                paper.setSz_infor_src(rs.getString("sz_infor_src"));
-                paper.setSz_infor_kind(rs.getString("sz_infor_kind"));
-                paper.setNt_old_id(rs.getInt("nt_old_id"));
-                papers.add(paper);
-            }
+                count++;
+                mysqlPstm.setLong(1, rs.getLong("ng_id"));
+                mysqlPstm.setString(2, rs.getString("sz_num"));
+                mysqlPstm.setString(3, rs.getString("sz_caption"));
+                mysqlPstm.setString(4, rs.getString("sz_kind"));
+                mysqlPstm.setString(5, rs.getString("sz_age"));
+                mysqlPstm.setLong(6, rs.getLong("ng_cat_id"));
+                mysqlPstm.setInt(7, rs.getInt("nt_section"));
+                mysqlPstm.setLong(8, rs.getLong("ng_subject_id"));
+                mysqlPstm.setString(9, rs.getString("sz_wenli"));
+                mysqlPstm.setString(10, rs.getString("sz_prov"));
+                mysqlPstm.setString(11, rs.getString("sz_city"));
+                mysqlPstm.setInt(12, rs.getInt("nt_term"));
+                mysqlPstm.setInt(13, rs.getInt("nt_grade"));
+                mysqlPstm.setInt(14, rs.getInt("nt_score"));
+                mysqlPstm.setInt(15, rs.getInt("nt_score_ex"));
+                mysqlPstm.setInt(16, rs.getInt("nt_cost_resp"));
+                mysqlPstm.setDate(17, rs.getDate("ts_created"));
+                mysqlPstm.setDate(18, rs.getDate("ts_updated"));
+                mysqlPstm.setDate(19, rs.getDate("ts_auditing"));
+                mysqlPstm.setString(20, rs.getString("tx_comment"));
+                mysqlPstm.setString(21, rs.getString("sz_infor_src"));
+                mysqlPstm.setString(22, rs.getString("sz_infor_kind"));
+                mysqlPstm.setInt(23, rs.getInt("nt_old_id"));
 
-            // 5.释放资源
-            PostgresqlUtil.close(conn, rs, st);
+                mysqlPstm.addBatch();
+
+                if (count % 5000 == 0) {
+                    mysqlPstm.executeBatch();
+                    mysqlConn.commit();
+                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+                }
+            }
+            mysqlPstm.executeBatch();
+            //优化插入第三步       提交，批量插入数据库中。
+            mysqlConn.commit();
+            mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return papers;
-    }
-
-    public void save(List<Paper> list) {
-        try {
-            //1.获取mysql连接
-            Connection conn = MysqlUtil.getConnection();
-
-            PreparedStatement st = null;
-
-            for (Paper paper : list) {
-
-                // 2.获取SQL执行者
-                st = conn.prepareStatement(insertSql);
-
-                st.setLong(1, paper.getNg_id());
-                st.setString(2, paper.getSz_num());
-                st.setString(3, paper.getSz_caption());
-                st.setString(4, paper.getSz_kind());
-                st.setString(5, paper.getSz_age());
-                st.setLong(6, paper.getNg_cat_id());
-                st.setInt(7, paper.getNt_section());
-                st.setLong(8, paper.getNg_subject_id());
-                st.setString(9, paper.getSz_wenli());
-                st.setString(10, paper.getSz_prov());
-                st.setString(11, paper.getSz_city());
-                st.setInt(12, paper.getNt_term());
-                st.setInt(13, paper.getNt_grade());
-                st.setInt(14, paper.getNt_score());
-                st.setInt(15, paper.getNt_score_ex());
-                st.setInt(16, paper.getNt_cost_resp());
-                if (paper.getTs_created()==null) {
-                    st.setDate(17, null);
-
-                } else {
-                    st.setDate(17, new java.sql.Date(paper.getTs_created().getTime()));
-
-                }
-                if(paper.getTs_updated()==null){
-                    st.setDate(18, null);
-
-                }else {
-                    st.setDate(18, new java.sql.Date(paper.getTs_updated().getTime()));
-
-                }
-                if(paper.getTs_auditing()==null){
-                    st.setDate(19, null);
-
-                }else {
-                    st.setDate(19, new java.sql.Date(paper.getTs_auditing().getTime()));
-                }
-                st.setString(20, paper.getTx_comment());
-                st.setString(21, paper.getSz_infor_src());
-                st.setString(22, paper.getSz_infor_kind());
-                st.setInt(23, paper.getNt_old_id());
-
-                // 3.执行sql语句
-                st.executeUpdate();
-
-            }
-
+        } finally {
             // 5.释放资源
-            MysqlUtil.close(conn, st);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
+                MysqlUtil.close(mysqlConn, mysqlPstm);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
