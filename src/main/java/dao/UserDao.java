@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao {
+public class userDao {
 
     String selectSql = "SELECT * FROM sys_user_t";
     String insertSql = "insert into sys_user_t(ng_id,sz_username,sz_password,nt_section,ng_subject_id,sz_nickname) values(?,?,?,?,?,?)";
@@ -23,7 +23,7 @@ public class UserDao {
 
         ResultSet rs = null;
 
-        int count = 0;
+        //int count = 0;
 
         try {
             //1.获取Connection连接
@@ -50,7 +50,7 @@ public class UserDao {
             rs = PostgresqlPstm.executeQuery();
 
             while (rs.next()) {
-                count++;
+                //count++;
                 mysqlPstm.setLong(1, rs.getLong("ng_id"));
                 mysqlPstm.setString(2, rs.getString("sz_username"));
                 mysqlPstm.setString(3, rs.getString("sz_password"));
@@ -59,18 +59,19 @@ public class UserDao {
                 mysqlPstm.setString(6, rs.getString("sz_nickname"));
 
 
-                mysqlPstm.addBatch();
+                //mysqlPstm.addBatch();
 
-                if (count % 5000 == 0) {
-                    mysqlPstm.executeBatch();
-                    mysqlConn.commit();
-                    mysqlPstm.clearBatch();        //提交后，Batch清空。
-                }
+//                if (count % 5000 == 0) {
+//                    mysqlPstm.executeBatch();
+//                    mysqlConn.commit();
+//                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+//                }
+                mysqlPstm.executeUpdate();
             }
-            mysqlPstm.executeBatch();
+            //mysqlPstm.executeBatch();
             //优化插入第三步       提交，批量插入数据库中。
             mysqlConn.commit();
-            mysqlPstm.clearBatch();
+            //mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();

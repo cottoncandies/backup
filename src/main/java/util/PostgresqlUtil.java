@@ -5,11 +5,11 @@ import java.sql.*;
 import java.util.Properties;
 
 public class PostgresqlUtil {
-    public static String DRIVERNAME = null;
-    public static String URL = null;
-    public static String USER = null;
-    public static String PASSWORD = null;
 
+    public static String drivername = null;
+    public static String url = null;
+    public static String user = null;
+    public static String password = null;
     public static Connection conn = null;
 
     static {
@@ -19,10 +19,10 @@ public class PostgresqlUtil {
             InputStream in = PostgresqlUtil.class.getClassLoader().getResourceAsStream("postgresql.properties");
             props.load(in);
 
-            DRIVERNAME = props.getProperty("driver");
-            URL = props.getProperty("url");
-            USER = props.getProperty("user");
-            PASSWORD = props.getProperty("password");
+            drivername = props.getProperty("driver");
+            url = props.getProperty("url");
+            user = props.getProperty("user");
+            password = props.getProperty("password");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -34,30 +34,64 @@ public class PostgresqlUtil {
             return conn;
         }
 
-        Class.forName(DRIVERNAME);
-        conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        Class.forName(drivername);
+        conn = DriverManager.getConnection(url, user, password);
 
         return conn;
     }
 
-    public static void close(Connection conn, PreparedStatement pstm) throws SQLException {
-        if (pstm != null) {
-            pstm.close();
+    public static void close(Connection conn, PreparedStatement preparedStatement) {
+
+        try {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (conn != null) {
-            conn.close();
+        try {
+
+            if (conn != null) {
+                conn.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public static void close(Connection conn, ResultSet rs, PreparedStatement pstm) throws SQLException {
-        if (pstm != null) {
-            pstm.close();
+    public static void close(Connection conn, PreparedStatement preparedStatement, ResultSet rs) {
+
+        try {
+
+            if (rs != null) {
+                rs.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (rs != null) {
-            rs.close();
+
+        try {
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (conn != null) {
-            conn.close();
+
+        try {
+
+            if (conn != null) {
+                conn.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -7,7 +7,6 @@ import util.PostgresqlUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class ExamDao {
 
@@ -25,7 +24,7 @@ public class ExamDao {
 
         ResultSet rs = null;
 
-        int count = 0;
+        //int count = 0;
 
         try {
             //1.获取Connection连接
@@ -42,7 +41,7 @@ public class ExamDao {
             // 2.获取SQL执行者
             PostgresqlPstm = postgresqlConn.prepareStatement(selectSql, ResultSet.TYPE_FORWARD_ONLY,
                     ResultSet.CONCUR_READ_ONLY);
-            PostgresqlPstm.setFetchSize(1000);
+            PostgresqlPstm.setFetchSize(10);
             PostgresqlPstm.setFetchDirection(ResultSet.FETCH_FORWARD);
 
             mysqlPstm = mysqlConn.prepareStatement(insertSql);
@@ -52,7 +51,7 @@ public class ExamDao {
             rs = PostgresqlPstm.executeQuery();
 
             while (rs.next()) {
-                count++;
+                //count++;
                 mysqlPstm.setLong(1, rs.getLong("ng_id"));
                 mysqlPstm.setLong(2, rs.getLong("ng_parent_id"));
                 mysqlPstm.setLong(3, rs.getLong("ng_cat_id"));
@@ -110,29 +109,26 @@ public class ExamDao {
                 mysqlPstm.setDate(55, rs.getDate("ts_updated"));
                 mysqlPstm.setDate(56, rs.getDate("ts_auditing"));
 
-                mysqlPstm.addBatch();
+                //mysqlPstm.addBatch();
+                mysqlPstm.executeUpdate();
 
-                if (count % 5000 == 0) {
-                    mysqlPstm.executeBatch();
-                    mysqlConn.commit();
-                    mysqlPstm.clearBatch();        //提交后，Batch清空。
-                }
+//                if (count % 5000 == 0) {
+//                    mysqlPstm.executeBatch();
+//                    mysqlConn.commit();
+//                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+//                }
             }
-            mysqlPstm.executeBatch();
+            //mysqlPstm.executeBatch();
             //优化插入第三步       提交，批量插入数据库中。
             mysqlConn.commit();
-            mysqlPstm.clearBatch();
+            //mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // 5.释放资源
-            try {
-                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
-                MysqlUtil.close(mysqlConn, mysqlPstm);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            PostgresqlUtil.close(postgresqlConn, PostgresqlPstm, rs);
+            MysqlUtil.close(mysqlConn, mysqlPstm);
         }
     }
 }

@@ -1,6 +1,6 @@
 package entity;
 
-public class User {
+public class user {
     private Long ng_id;
     private String sz_username;
     private String sz_password;
@@ -56,7 +56,7 @@ public class User {
         this.sz_nickname = sz_nickname;
     }
 
-    public User() {
+    public user() {
 
     }
 }
