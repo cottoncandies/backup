@@ -1,8 +1,8 @@
 package test;
 
-import dao.userDao;
+import dao.UserDao;
 
-public class userTest {
+public class UserTest {
 
 
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class userTest {
 
     public static void selectFunction() {
 
-        userDao userDao = new userDao();
+        UserDao userDao = new UserDao();
 
         userDao.backup();
 

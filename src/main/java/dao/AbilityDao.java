@@ -6,7 +6,6 @@ import util.PostgresqlUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class AbilityDao {
 
@@ -51,13 +50,13 @@ public class AbilityDao {
 
             while (rs.next()) {
                 count++;
-                mysqlPstm.setLong(1, rs.getLong("ng_id"));
-                mysqlPstm.setInt(2, rs.getInt("nt_section"));
-                mysqlPstm.setLong(3, rs.getLong("ng_subject_id"));
-                mysqlPstm.setString(4, rs.getString("sz_caption"));
-                mysqlPstm.setInt(5, rs.getInt("nt_state"));
-                mysqlPstm.setString(6, rs.getString("tx_comment"));
-                mysqlPstm.setInt(7, rs.getInt("nt_old_id"));
+                mysqlPstm.setObject(1, rs.getString("ng_id"));
+                mysqlPstm.setObject(2, rs.getString("nt_section"));
+                mysqlPstm.setObject(3, rs.getString("ng_subject_id"));
+                mysqlPstm.setObject(4, rs.getString("sz_caption"));
+                mysqlPstm.setObject(5, rs.getString("nt_state"));
+                mysqlPstm.setObject(6, rs.getString("tx_comment"));
+                mysqlPstm.setObject(7, rs.getString("nt_old_id"));
                 mysqlPstm.addBatch();
 
                 if (count % 5000 == 0) {
@@ -75,12 +74,9 @@ public class AbilityDao {
             e.printStackTrace();
         } finally {
             // 5.释放资源
-            try {
-                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
-                MysqlUtil.close(mysqlConn, mysqlPstm);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            PostgresqlUtil.close(postgresqlConn, PostgresqlPstm, rs);
+            MysqlUtil.close(mysqlConn, mysqlPstm);
+
         }
     }
 }

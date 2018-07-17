@@ -6,7 +6,6 @@ import util.PostgresqlUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class ExamAbiDao {
 
@@ -71,12 +70,8 @@ public class ExamAbiDao {
             e.printStackTrace();
         } finally {
             // 5.释放资源
-            try {
-                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
-                MysqlUtil.close(mysqlConn, mysqlPstm);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            PostgresqlUtil.close(postgresqlConn, PostgresqlPstm, rs);
+            MysqlUtil.close(mysqlConn, mysqlPstm);
         }
     }
 }

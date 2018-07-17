@@ -2,6 +2,7 @@ package util;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 
 public class MysqlUtil {
@@ -93,5 +94,61 @@ public class MysqlUtil {
             e.printStackTrace();
         }
     }
+
+//
+//    /**
+//     * * 查询数据库的方法
+//     * * @param sql        字符串，要执行的sql语句  如果其中有变量的话，就用  ‘"+变量+"’
+//     */
+//    public void R(String sql, List<ResultSet> args) {
+//        Connection connection = null;
+//        PreparedStatement preparedStatement = null;
+//        ResultSet resultSet = null;
+//        try {
+//            connection = getConnection();
+//            preparedStatement = connection.prepareStatement(sql);
+//            for (int i = 0; i < args.size(); i++) {
+//                preparedStatement.setObject(i + 1, args.get(i));
+//            }
+//            resultSet = preparedStatement.executeQuery();
+//            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+//            int columnCount = resultSetMetaData.getColumnCount();
+//            while (resultSet.next() != false) {
+//                //这里可以执行一些其他的操作
+//                for (int i = 1; i <= columnCount; i++) {
+//                    System.out.println(resultSet.getString(i));
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            release(connection, preparedStatement, resultSet);
+//        }
+//    }
+//
+//    /**
+//     * 数据库记录增删改的方法
+//     *
+//     * @param sql 字符串，要执行的sql语句  如果其中有变量的话，就用  ‘"+变量+"’
+//     */
+//    public void CUD(String sql, Object... args) {
+//        Connection connection = null;
+//        PreparedStatement preparedStatement = null;
+//        int result = 0;
+//        try {
+//            connection = getConnection();
+//            preparedStatement = connection.prepareStatement(sql);
+//            for (int i = 0; i < args.length; i++) {
+//                preparedStatement.setObject(i + 1, args[i]);
+//            }
+//            result = preparedStatement.executeUpdate();
+//            //这里可以根据返回结果(影响记录的条数)进行判断，该语句是否执行成功
+//            System.out.println(result);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            release(connection, preparedStatement, null);
+//        }
+//    }
 }
 

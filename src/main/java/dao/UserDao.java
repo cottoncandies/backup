@@ -6,9 +6,8 @@ import util.PostgresqlUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
-public class userDao {
+public class UserDao {
 
     String selectSql = "SELECT * FROM sys_user_t";
     String insertSql = "insert into sys_user_t(ng_id,sz_username,sz_password,nt_section,ng_subject_id,sz_nickname) values(?,?,?,?,?,?)";
@@ -77,12 +76,8 @@ public class userDao {
             e.printStackTrace();
         } finally {
             // 5.释放资源
-            try {
-                PostgresqlUtil.close(postgresqlConn, rs, PostgresqlPstm);
-                MysqlUtil.close(mysqlConn, mysqlPstm);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            PostgresqlUtil.close(postgresqlConn, PostgresqlPstm, rs);
+            MysqlUtil.close(mysqlConn, mysqlPstm);
         }
     }
 }
