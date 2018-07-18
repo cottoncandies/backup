@@ -2,8 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afcd4d3b-6d26-4db6-9436-ab79c47baa2c" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/test/CopyTest.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/CopyUtil.java" afterPath="$PROJECT_DIR$/src/main/java/util/CopyUtil.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AbilityDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/BookCatalogDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ExamAbiDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ExamDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ExamKindDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ExamKpDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FavoriteDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/KnowPointDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MyPaperDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PaperDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PaperExamDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SubjectDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Ability.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/BookCatalog.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Exam.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ExamAbi.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ExamKind.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/ExamKp.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Favorite.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/KnowPoint.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/MyPaper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Paper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/PaperExam.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Subject.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/AbilityTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/BookCatalogTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/ExamAbiTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/ExamKindTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/ExamKpTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/ExamTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/FavoriteTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/KnowPointTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MyPaperTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/PapaerExamTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/PaperTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/SubjectTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/UserTest.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,36 +57,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CopyUtil.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/util/CopyUtil.java">
+      <file leaf-file-name="CopyTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/test/CopyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-              <folding>
-                <marker date="1531897078286" expanded="true" signature="205:229" ph="SELECT * FRO... sys_user_t" />
-                <marker date="1531897078286" expanded="true" signature="256:366" ph="insert into sys_user_t... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/test/UserTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            <state relative-caret-position="481">
+              <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -117,6 +134,7 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/BookCatalogDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/UserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/CopyUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/test/CopyTest.java" />
       </list>
     </option>
   </component>
@@ -181,30 +199,6 @@
               <item name="backup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="backup" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backup" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -232,7 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.UserTest">
+  <component name="RunManager" selected="Application.CopyTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -278,14 +272,14 @@
       <module name="backup" />
       <envs />
     </configuration>
-    <configuration name="ExamTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CopyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="test.ExamTest" />
+      <option name="MAIN_CLASS_NAME" value="test.CopyTest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -297,14 +291,14 @@
       <module name="backup" />
       <envs />
     </configuration>
-    <configuration name="UserTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="ExamTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="test.UserTest" />
+      <option name="MAIN_CLASS_NAME" value="test.ExamTest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -394,11 +388,11 @@
       <item index="0" class="java.lang.String" itemvalue="Application.ExamTest" />
       <item index="1" class="java.lang.String" itemvalue="Application.AbilityTest" />
       <item index="2" class="java.lang.String" itemvalue="Application.BookCatalogTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.UserTest" />
+      <item index="3" class="java.lang.String" itemvalue="Application.CopyTest" />
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.UserTest" />
+        <item index="0" class="java.lang.String" itemvalue="Application.CopyTest" />
         <item index="1" class="java.lang.String" itemvalue="Application.BookCatalogTest" />
         <item index="2" class="java.lang.String" itemvalue="Application.AbilityTest" />
         <item index="3" class="java.lang.String" itemvalue="Application.ExamTest" />
@@ -420,7 +414,7 @@
       <updated>1531727444589</updated>
       <workItem from="1531727447876" duration="6533000" />
       <workItem from="1531734527081" duration="1259000" />
-      <workItem from="1531894021854" duration="3679000" />
+      <workItem from="1531894021854" duration="4145000" />
     </task>
     <task id="LOCAL-00001" summary="优化util代码">
       <created>1531730878682</created>
@@ -457,15 +451,21 @@
       <option name="project" value="LOCAL" />
       <updated>1531897590301</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完成通用CopyUtil的设计">
+      <created>1531897708507</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1531897708507</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11471000" />
+    <option name="totallyTimeSpent" value="11937000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -480,7 +480,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -615,150 +615,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/AbilityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/AbilityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="77" column="55" lean-forward="false" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078051" expanded="true" signature="208:235" ph="SELECT * FRO... sys_ability_t" />
-            <marker date="1531897078051" expanded="true" signature="262:382" ph="insert into sys_ability_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamAbiDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="73" column="55" lean-forward="false" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078477" expanded="true" signature="208:236" ph="SELECT * FRO... sys_exam_abi_t" />
-            <marker date="1531897078477" expanded="true" signature="263:331" ph="insert into sys_exam_abi_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="130" column="55" lean-forward="false" selection-start-line="130" selection-start-column="55" selection-end-line="130" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078179" expanded="true" signature="206:230" ph="SELECT * FRO... sys_exam_t" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamKindDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="77" column="55" lean-forward="false" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078442" expanded="true" signature="209:238" ph="SELECT * FRO... sys_exam_kind_t" />
-            <marker date="1531897078442" expanded="true" signature="265:387" ph="insert into sys_exam_kind_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamKpDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="75" column="55" lean-forward="false" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078142" expanded="true" signature="207:234" ph="SELECT * FRO... sys_exam_kp_t" />
-            <marker date="1531897078142" expanded="true" signature="261:339" ph="insert into sys_exam_kp_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/FavoriteDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="78" column="55" lean-forward="false" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078405" expanded="true" signature="210:238" ph="SELECT * FRO... sys_favorite_t" />
-            <marker date="1531897078405" expanded="true" signature="265:376" ph="insert into sys_favorite_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/KnowPointDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="80" column="55" lean-forward="false" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078097" expanded="true" signature="210:240" ph="SELECT * FRO... sys_know_point_t" />
-            <marker date="1531897078097" expanded="true" signature="267:414" ph="insert into sys_know_point_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MyPaperDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="98" column="55" lean-forward="false" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078327" expanded="true" signature="209:237" ph="SELECT * FRO... sys_my_paper_t" />
-            <marker date="1531897078327" expanded="true" signature="264:704" ph="insert into sys_my_paper_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PaperDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="96" column="55" lean-forward="false" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078366" expanded="true" signature="207:232" ph="SELECT * FRO... sys_paper_t" />
-            <marker date="1531897078366" expanded="true" signature="259:586" ph="insert into sys_paper_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PaperExamDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
-          <caret line="78" column="55" lean-forward="false" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078550" expanded="true" signature="210:240" ph="SELECT * FRO... sys_paper_exam_t" />
-            <marker date="1531897078550" expanded="true" signature="267:385" ph="insert into sys_paper_exam_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/SubjectDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="74" column="55" lean-forward="false" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
-          <folding>
-            <marker date="1531897078510" expanded="true" signature="208:235" ph="SELECT * FRO... sys_subject_t" />
-            <marker date="1531897078510" expanded="true" signature="262:331" ph="insert into sys_subject_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/postgresql.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/BookCatalogDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="54" column="49" lean-forward="false" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
-          <folding>
-            <marker date="1531897078220" expanded="true" signature="213:245" ph="SELECT * FRO... sys_book_catalog_t" />
-            <marker date="1531897078220" expanded="true" signature="272:487" ph="insert into sys_book_catalog_t... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -774,28 +635,129 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding>
-            <marker date="1531897078286" expanded="true" signature="205:229" ph="SELECT * FRO... sys_user_t" />
-            <marker date="1531897078286" expanded="true" signature="256:366" ph="insert into sys_user_t... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/UserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/util/CopyUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        <state relative-caret-position="594">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/AbilityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/AbilityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/BookCatalogDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamAbiDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamKindDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ExamKpDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/FavoriteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/KnowPointDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MyPaperDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PaperDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PaperExamDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/SubjectDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/CopyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
