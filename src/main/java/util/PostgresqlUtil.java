@@ -65,31 +65,25 @@ public class PostgresqlUtil {
     public static void close(Connection conn, PreparedStatement preparedStatement, ResultSet rs) {
 
         try {
-
             if (rs != null) {
                 rs.close();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         try {
-
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         try {
-
             if (conn != null) {
                 conn.close();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

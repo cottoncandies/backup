@@ -50,40 +50,42 @@ public class BookCatalogDao {
             // 3.执行sql语句
             rs = PostgresqlPstm.executeQuery();
 
-            while (rs.next()) {
-                count++;
-                mysqlPstm.setLong(1, rs.getLong("ng_id"));
-                mysqlPstm.setString(2, rs.getString("sz_num"));
-                mysqlPstm.setString(3, rs.getString("sz_parent_num"));
-                mysqlPstm.setString(4, rs.getString("sz_caption"));
-                mysqlPstm.setLong(5, rs.getLong("ng_parent_id"));
-                mysqlPstm.setInt(6, rs.getInt("nt_section"));
-                mysqlPstm.setLong(7, rs.getLong("ng_subject_id"));
-                mysqlPstm.setInt(8, rs.getInt("nt_grade"));
-                mysqlPstm.setInt(9, rs.getInt("nt_serial"));
-                mysqlPstm.setString(10, rs.getString("sz_descr"));
-                mysqlPstm.setInt(11, rs.getInt("nt_show"));
-                mysqlPstm.setString(12, rs.getString("tx_comment"));
-                mysqlPstm.setInt(13, rs.getInt("nt_old_id"));
-                mysqlPstm.addBatch();
+            if (rs.next()) {
 
-                if (count % 5000 == 0) {
-                    mysqlPstm.executeBatch();
-                    mysqlConn.commit();
-                    mysqlPstm.clearBatch();        //提交后，Batch清空。
-                }
+                System.out.println(rs.getString(1));
+//                count++;
+//                mysqlPstm.setLong(1, rs.getLong("ng_id"));
+//                mysqlPstm.setString(2, rs.getString("sz_num"));
+//                mysqlPstm.setString(3, rs.getString("sz_parent_num"));
+//                mysqlPstm.setString(4, rs.getString("sz_caption"));
+//                mysqlPstm.setLong(5, rs.getLong("ng_parent_id"));
+//                mysqlPstm.setInt(6, rs.getInt("nt_section"));
+//                mysqlPstm.setLong(7, rs.getLong("ng_subject_id"));
+//                mysqlPstm.setInt(8, rs.getInt("nt_grade"));
+//                mysqlPstm.setInt(9, rs.getInt("nt_serial"));
+//                mysqlPstm.setString(10, rs.getString("sz_descr"));
+//                mysqlPstm.setInt(11, rs.getInt("nt_show"));
+//                mysqlPstm.setString(12, rs.getString("tx_comment"));
+//                mysqlPstm.setInt(13, rs.getInt("nt_old_id"));
+//                mysqlPstm.addBatch();
+
+//                if (count % 5000 == 0) {
+//                    mysqlPstm.executeBatch();
+//                    mysqlConn.commit();
+//                    mysqlPstm.clearBatch();        //提交后，Batch清空。
+//                }
             }
-            mysqlPstm.executeBatch();
-            //优化插入第三步       提交，批量插入数据库中。
-            mysqlConn.commit();
-            mysqlPstm.clearBatch();
+//            mysqlPstm.executeBatch();
+//            //优化插入第三步       提交，批量插入数据库中。
+//            mysqlConn.commit();
+//            mysqlPstm.clearBatch();
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // 5.释放资源
             PostgresqlUtil.close(postgresqlConn, PostgresqlPstm, rs);
-            MysqlUtil.close(mysqlConn, mysqlPstm);
+            MysqlUtil.close(mysqlConn, mysqlPstm, null);
         }
     }
 }

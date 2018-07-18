@@ -76,7 +76,7 @@ public class PaperExamDao {
         } finally {
             // 5.释放资源
             PostgresqlUtil.close(postgresqlConn, PostgresqlPstm, rs);
-            MysqlUtil.close(mysqlConn, mysqlPstm);
+            MysqlUtil.close(mysqlConn, mysqlPstm, null);
         }
     }
 }
