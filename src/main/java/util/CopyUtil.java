@@ -41,6 +41,7 @@ public class CopyUtil {
             while (rs.next()) {
                 count++;
                 for (int i = 1; i <= columnCount; i++) {
+                    //核心操作,数据库数据拷贝.
                     mysqlPstm.setObject(i, rs.getString(i));
                 }
                 //添加到批操作
